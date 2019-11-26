@@ -4,9 +4,7 @@ using UnityEngine;
 
 
 public class PlayerController : MonoBehaviour
-{
-    //static public Vector3 position;
-
+{  
     public float acceleration;
     public float rotSpeedmax;
     public float cooldown;
