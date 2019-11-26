@@ -5,7 +5,7 @@ using UnityEngine;
 public class Quest : MonoBehaviour
 {
     public bool isActive;
-
+    //hola
     public string title;
     public string description;
     public string completionDescription;
