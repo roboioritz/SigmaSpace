@@ -10,7 +10,7 @@ public class ScenePlayerController : MonoBehaviour
     public bool moving;
     public Vector2Int departure;
     public int engine;
-    public Vector2Int moveCount;
+    public Vector2Int moveCount;   
 
     void Start()
     {        
@@ -58,6 +58,7 @@ public class ScenePlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         moving = false;
+        transform.position = new Vector3Int(departure.x + moveCount.x, 0, departure.y + moveCount.y);
     }
 
 }
