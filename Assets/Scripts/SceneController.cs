@@ -12,6 +12,8 @@ public class SceneController : MonoBehaviour
 
     private void Start()
     {
+        Ui_controller.i.Enable("ingame");
+
         int count = 0;
         for (int i = 0; i < 5; i++)
         {

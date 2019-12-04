@@ -5,11 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    public GameObject playerstats;
+    public GameObject playerstats;    
 
     void Start()
     {
-        
+        PlayerStats.i.Reset();
+        Ui_controller.i.Enable("mainmenu");
     }
     
     void Update()
@@ -23,6 +24,7 @@ public class MenuManager : MonoBehaviour
 
     public void Play()
     {
+        Instantiate(playerstats, transform.position, transform.rotation);
         SceneManager.LoadScene("LevelScene");
     }
 

@@ -25,7 +25,10 @@ public class PlayerStats : MonoBehaviour
         DontDestroyOnLoad(i);
     }
 
-
+    public void Reset()
+    {
+        Destroy(gameObject);
+    }
 
 
 }

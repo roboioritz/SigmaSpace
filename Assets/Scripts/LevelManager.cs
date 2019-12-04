@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
     
     void Start()
     {
+        Ui_controller.i.Enable("ingame");
         i = this;
         Instantiate(Player1, transform.position, Quaternion.identity);
     }
