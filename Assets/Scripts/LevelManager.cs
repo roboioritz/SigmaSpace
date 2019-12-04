@@ -31,7 +31,7 @@ public class LevelManager : MonoBehaviour
             twoPlayers = true;
             Instantiate(Player2, transform.position, Quaternion.identity);
         }
-        if (asteroidCount == 0 && start)
+        if (asteroidCount <= 0 && start)
         {
             //playsound victori
             PlayerStats.i.position = PlayerStats.i.destiny;

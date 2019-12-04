@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class ScenePlayerController : MonoBehaviour
 {
-    public PlayerStats playerStats;
-
     public bool moving;
     public Vector2Int departure;
     public int engine;
@@ -14,9 +12,9 @@ public class ScenePlayerController : MonoBehaviour
 
     void Start()
     {        
-        transform.position = new Vector3(playerStats.position.x,1, playerStats.position.y);
-        departure = playerStats.position;
-        engine = playerStats.engineLvl;
+        transform.position = new Vector3(PlayerStats.i.position.x, 0.1f, PlayerStats.i.position.y);
+        departure = PlayerStats.i.position;
+        engine = PlayerStats.i.engineLvl;
     }
     
     void Update()
@@ -45,12 +43,16 @@ public class ScenePlayerController : MonoBehaviour
             moveCount.x += Mathf.RoundToInt(1 * Mathf.Sign(Input.GetAxis("Horizontal1")));
             transform.rotation = Quaternion.Euler(0, 90 + 90 * Mathf.Sign(-Input.GetAxis("Horizontal1")), 0);
         }
+
+
+
         if (moving) transform.Translate(2*Time.deltaTime,0,0);
+
         if (!moving && Input.GetAxis("Fire1") != 0)
         {
             //SceneManager.LoadScene("["+ (departure.x + moveCount.x).ToString() +"][" + (departure.y + moveCount.y).ToString() + "]");
             SceneManager.LoadScene("Pruebas sector");
-            PlayerStats.i.destiny = new Vector2Int(departure.x - moveCount.x, departure.y - moveCount.y);
+            PlayerStats.i.destiny = new Vector2Int(departure.x + moveCount.x, departure.y + moveCount.y);
         }
     }
 
