@@ -11,8 +11,7 @@ public class MenuManager : MonoBehaviour
     {
         
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return))
@@ -20,5 +19,15 @@ public class MenuManager : MonoBehaviour
             Instantiate(playerstats, transform.position, transform.rotation);
             SceneManager.LoadScene("LevelScene");
         }
+    }
+
+    public void Play()
+    {
+        SceneManager.LoadScene("LevelScene");
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 }
