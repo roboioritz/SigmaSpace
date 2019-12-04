@@ -25,10 +25,11 @@ public class ScenePlayerController : MonoBehaviour
     public void Move()
     {
         //&& Mathf.Abs(moveCount.x) + Mathf.Abs(moveCount.y) + 1 * Mathf.Sign(Input.GetAxis("Horizontal")) * Mathf.Sign(moveCount.x) < engine + 1 
-                                                        //&& Mathf.Abs(departure.x) + Mathf.Abs(moveCount.x) + 1 * Mathf.Sign(Input.GetAxis("Horizontal")) * Mathf.Sign(moveCount.x) < 3)
-
+        //&& Mathf.Abs(departure.x) + Mathf.Abs(moveCount.x) + 1 * Mathf.Sign(Input.GetAxis("Horizontal")) * Mathf.Sign(moveCount.x) < 3)
+        //departure.y + moveCount.y + 1 * Mathf.Sign(-Input.GetAxis("Vertical1"))
         if (!moving && Input.GetAxis("Vertical1") != 0 && + Mathf.Abs(moveCount.y + 1 * Mathf.Sign(-Input.GetAxis("Vertical1"))) + Mathf.Abs(moveCount.x) < engine+1
-                                                        && Mathf.Abs(departure.x) + Mathf.Abs(moveCount.y + 1 * Mathf.Sign(-Input.GetAxis("Vertical1")))  < 3) //Este 3 en el futuro sera el limite del mapa +1
+                                                        && departure.y + moveCount.y + 1 * Mathf.Sign(-Input.GetAxis("Vertical1")) < 3
+                                                        && departure.y + moveCount.y + 1 * Mathf.Sign(-Input.GetAxis("Vertical1")) > -3)//Este 3 en el futuro sera el limite del mapa +1
         {
             moving = true;
             StartCoroutine(Moving());
@@ -36,15 +37,14 @@ public class ScenePlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0,-90 * Mathf.Sign(-Input.GetAxis("Vertical1")),0);
         }
         if (!moving && Input.GetAxis("Horizontal1") != 0 && +Mathf.Abs(moveCount.y ) + Mathf.Abs(moveCount.x + 1 * Mathf.Sign(Input.GetAxis("Horizontal1"))) < engine + 1
-                                                      && Mathf.Abs(departure.y) + Mathf.Abs(moveCount.x + 1 * Mathf.Sign(Input.GetAxis("Horizontal1"))) < 3)
+                                                      && departure.x + moveCount.x + 1 * Mathf.Sign(Input.GetAxis("Horizontal1")) < 3
+                                                        && departure.x + moveCount.x + 1 * Mathf.Sign(Input.GetAxis("Horizontal1")) > -3)
         {
             moving = true;
             StartCoroutine(Moving());
             moveCount.x += Mathf.RoundToInt(1 * Mathf.Sign(Input.GetAxis("Horizontal1")));
             transform.rotation = Quaternion.Euler(0, 90 + 90 * Mathf.Sign(-Input.GetAxis("Horizontal1")), 0);
-        }
-
-
+        }       
 
         if (moving) transform.Translate(2*Time.deltaTime,0,0);
 
