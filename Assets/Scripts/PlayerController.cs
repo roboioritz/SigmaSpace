@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public GameObject FirePoint;
     public GameObject trailPoint;
     public GameObject trail;
+    public GameObject explosion;
     public Animator ani;   
 
     private GameObject objeto;
@@ -106,7 +107,8 @@ public class PlayerController : MonoBehaviour
     }
 
     public void Dead()
-    {        
+    {
+        PlayerStats.i.levels[(PlayerStats.i.destiny.x + 2) + 5 * (-PlayerStats.i.destiny.y+2)] = 1;
         LevelManager.i.SendMessage("End");
         Destroy(gameObject);
     }
@@ -125,6 +127,7 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(Inmunity());
                 if (armor < 0)
                 {
+                    Instantiate(explosion,transform.position,transform.rotation);
                     Dead();
                 }
 

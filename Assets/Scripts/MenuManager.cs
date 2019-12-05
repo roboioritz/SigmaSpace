@@ -9,13 +9,13 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
-        PlayerStats.i.Reset();
+        PlayerStats.i.Resetear();
         Ui_controller.i.Enable("mainmenu");
     }
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return)|| Input.GetButton("Start1"))
         {
             Instantiate(playerstats, transform.position, transform.rotation);
             SceneManager.LoadScene("LevelScene");

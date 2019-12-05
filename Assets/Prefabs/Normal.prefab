@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b82ff1fb24839f45b4197100e617ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Vel: {x: 0, y: -1}
+  Vel: {x: 0, y: 0}
   rotVel: {x: 0, y: 0, z: 0}
   type: Normal
   hp: 15
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630a5398b5bb53248a8452ec615f5494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: 3
+  size: 2
 --- !u!54 &8328995288273276252
 Rigidbody:
   m_ObjectHideFlags: 0

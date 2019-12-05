@@ -13,10 +13,13 @@ public class LevelManager : MonoBehaviour
     public bool start = false;
     public int asteroidCount;
 
+    private bool paused;
+
     public static bool twoPlayers = false;
     
-    void Start()
+    void Awake()
     {
+        Time.timeScale = 1f;
         Ui_controller.i.Enable("ingame");
         i = this;
         Instantiate(Player1, transform.position, Quaternion.identity);
@@ -24,19 +27,36 @@ public class LevelManager : MonoBehaviour
    
     void Update()
     {
-        posP1 = Player1.transform.position;
-        if(twoPlayers) posP2 = Player2.transform.position;
+        if (!paused)
+        {
+            posP1 = Player1.transform.position;
+            if (twoPlayers) posP2 = Player2.transform.position;
 
-        if (!twoPlayers && Input.GetKeyDown(KeyCode.Return))
-        {
-            twoPlayers = true;
-            Instantiate(Player2, transform.position, Quaternion.identity);
+            if (!twoPlayers && (Input.GetKeyDown(KeyCode.Return) || Input.GetButton("Start2")))
+            {
+                twoPlayers = true;
+                //Instantiate(Player2, transform.position, Quaternion.identity);
+            }
+            if (asteroidCount <= 0)
+            {
+                //playsound victori
+                PlayerStats.i.levels[(PlayerStats.i.destiny.x + 2) + 5 * (-PlayerStats.i.destiny.y + 2)] = 2;
+                PlayerStats.i.position = PlayerStats.i.destiny;
+                StartCoroutine(Back());
+            }
+
+            if (Input.GetButtonDown("Start1"))
+            {
+                paused = true;
+                Ui_controller.i.pause.SetActive(true);
+                Time.timeScale = 0f;
+            }
         }
-        if (asteroidCount <= 0 && start)
+        else if (Input.GetButtonDown("Start1"))
         {
-            //playsound victori
-            PlayerStats.i.position = PlayerStats.i.destiny;
-            StartCoroutine(Back());
+            paused = false;
+            Ui_controller.i.pause.SetActive(false);
+            Time.timeScale = 1f;
         }
     }
 
@@ -62,10 +82,19 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator Back()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(5f);
         SceneManager.LoadScene("LevelScene");
     }
 
+    public void Exit()
+    {
+        SceneManager.LoadScene("LevelScene");
+    }
 
-
+    public void Contine()
+    {
+        paused = false;
+        Ui_controller.i.pause.SetActive(false);
+        Time.timeScale = 1f;
+    }
 }

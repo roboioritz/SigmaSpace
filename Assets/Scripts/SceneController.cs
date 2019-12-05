@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class SceneController : MonoBehaviour
 {
     public List<Level> Levels;
-    public List<Quest> Quests;
+    //public List<Quest> Quests;
     public GameObject player;
     //public int[,] stages = new int[5,5];
     public Level[,] stages = new Level[5, 5];
@@ -61,9 +62,42 @@ public class SceneController : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < Quests.Count; i++)
+        /*for (int i = 0; i < Quests.Count; i++)
         {
             Quests[i].isActive = PlayerStats.i.quests[i];
-        } 
+        } */
     }
+
+    public void Buy(string product)
+    {
+        switch (product)
+        {
+            case "engine":
+                if (PlayerStats.i.money >= (PlayerStats.i.engineLvl * 10 + 10) && PlayerStats.i.engineLvl <= 2)
+                {
+                    PlayerStats.i.money -= (PlayerStats.i.engineLvl * 10 + 10);
+                    PlayerStats.i.engineLvl++;
+                }break;
+            case "armor":
+                if (PlayerStats.i.money >= (PlayerStats.i.armorLvl * 10 + 10) && PlayerStats.i.armorLvl <= 5)
+                {
+                    PlayerStats.i.money -= (PlayerStats.i.armorLvl * 10 + 10);
+                    PlayerStats.i.armorLvl++;
+                }break;
+            case "laser":
+                if (PlayerStats.i.money >= (PlayerStats.i.laserLvl * 10 + 10) && PlayerStats.i.laserLvl <= 4)
+                {
+                    PlayerStats.i.money -= (PlayerStats.i.laserLvl * 10 + 10);
+                    PlayerStats.i.laserLvl++;
+                }break;
+            case "magnet":
+                if (PlayerStats.i.money >= (PlayerStats.i.laserLvl * 10 + 10) && PlayerStats.i.laserLvl <= 3)
+                {
+                    PlayerStats.i.money -= (PlayerStats.i.laserLvl * 10 + 10);
+                    PlayerStats.i.laserLvl++;
+                }break;
+        }
+    }
+
+    
 }

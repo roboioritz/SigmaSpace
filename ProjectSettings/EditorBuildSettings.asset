@@ -6,11 +6,89 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: bf6bf7b7d01df30418a3e6d69c35b8c7
+  - enabled: 1
     path: Assets/Scenes/LevelScene.unity
     guid: 8023096ab9981514ea0312cff47e5fe3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Pruebas sector.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/[0][0].unity
+    guid: d5a3cf3deed74e64d882d537db48adf6
+  - enabled: 1
+    path: Assets/Scenes/[-1][0].unity
+    guid: 9273597bcb6074a49abf3cfdda5f7de1
+  - enabled: 1
+    path: Assets/Scenes/[0][-1].unity
+    guid: 863aaf5cfd811694f9524fe77bee721b
+  - enabled: 1
+    path: Assets/Scenes/[0][1].unity
+    guid: e4f104498f558b840b431ec624907d0a
+  - enabled: 1
+    path: Assets/Scenes/[1][0].unity
+    guid: 640b8d91f22e3744face1065ad527362
+  - enabled: 1
+    path: Assets/Scenes/[1][1].unity
+    guid: e51357a92e343ad49a000cd5a4c70be1
+  - enabled: 1
+    path: Assets/Scenes/[-1][-1].unity
+    guid: 06156dcfff27fe54992955d37db32c24
+  - enabled: 1
+    path: Assets/Scenes/[-1][-2].unity
+    guid: 7033eb6aff8d3904da726fa2da7d6966
+  - enabled: 1
+    path: Assets/Scenes/[-1][1].unity
+    guid: 8938aafbae7f5fa458b0ce8cf321b1c2
+  - enabled: 1
+    path: Assets/Scenes/[-1][2].unity
+    guid: a8f7acf7f0ee78d4b8dcb47f8fe30666
+  - enabled: 1
+    path: Assets/Scenes/[-2][-1].unity
+    guid: 949c9077124566e4694624fd25f7c50f
+  - enabled: 1
+    path: Assets/Scenes/[-2][-2].unity
+    guid: 3b1767cab7758744db9c307d71d6e9fa
+  - enabled: 1
+    path: Assets/Scenes/[-2][0].unity
+    guid: b0223d1a8d3bd03419965d4e54e7fa83
+  - enabled: 1
+    path: Assets/Scenes/[-2][1].unity
+    guid: dbeef2ea0d5b1444b8a79fdf7bc6d1f7
+  - enabled: 1
+    path: Assets/Scenes/[-2][2].unity
+    guid: d7f95db7f5e8591458fbeadfb027da2b
+  - enabled: 1
+    path: Assets/Scenes/[0][-2].unity
+    guid: b2e84dc0ffece2f4092d1c03b93b5627
+  - enabled: 1
+    path: Assets/Scenes/[0][2].unity
+    guid: e7dfbd7ee9655614a9fbff55fa95afaf
+  - enabled: 1
+    path: Assets/Scenes/[1][-1].unity
+    guid: 1bc951f3d495d834b964733347c6b456
+  - enabled: 1
+    path: Assets/Scenes/[1][-2].unity
+    guid: 9c7ffd58992d2454989686a056e056cf
+  - enabled: 1
+    path: Assets/Scenes/[1][2].unity
+    guid: 17c56a266c82270499fa1c53de4d4239
+  - enabled: 1
+    path: Assets/Scenes/[2][-1].unity
+    guid: cad99b4bd3ed32b4a8f4265a2d5ddb20
+  - enabled: 1
+    path: Assets/Scenes/[2][-2].unity
+    guid: 5844fcb73940e3e43a2a751c41ebf45d
+  - enabled: 1
+    path: Assets/Scenes/[2][0].unity
+    guid: ec3a7ca06bad9f545924bdcecf0586d0
+  - enabled: 1
+    path: Assets/Scenes/[2][1].unity
+    guid: 8d006df3927b2454b8d6f112b9b6c854
+  - enabled: 1
+    path: Assets/Scenes/[2][2].unity
+    guid: 360ddf9c3d710b34796dc4ed9fc12466
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 210b1558ba640494c812bd85a724204b,
       type: 2}

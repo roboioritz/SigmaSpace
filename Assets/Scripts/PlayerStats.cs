@@ -16,6 +16,8 @@ public class PlayerStats : MonoBehaviour
     public int armorLvl;
     public int magnetLvl;
 
+    public int money;
+
     public int[] levels;
     public bool[] quests;
 
@@ -25,10 +27,13 @@ public class PlayerStats : MonoBehaviour
         DontDestroyOnLoad(i);
     }
 
-    public void Reset()
+    public void Resetear()
     {
         Destroy(gameObject);
     }
 
-
+    public void Engine()
+    {
+        engineLvl++;
+    }
 }

@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b82ff1fb24839f45b4197100e617ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Vel: {x: 0.01, y: 0}
+  Vel: {x: 0, y: 0}
   rotVel: {x: 0, y: 0, z: 0}
   type: Hive
   hp: 16

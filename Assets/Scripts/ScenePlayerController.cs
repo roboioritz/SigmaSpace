@@ -8,10 +8,14 @@ public class ScenePlayerController : MonoBehaviour
     public bool moving;
     public Vector2Int departure;
     public int engine;
-    public Vector2Int moveCount;   
+    public Vector2Int moveCount;
+
+    private bool paused;
+    private bool shopopen;
 
     void Start()
-    {        
+    {
+        Time.timeScale = 1f;
         transform.position = new Vector3(PlayerStats.i.position.x, 0.1f, PlayerStats.i.position.y);
         departure = PlayerStats.i.position;
         engine = PlayerStats.i.engineLvl;
@@ -19,7 +23,40 @@ public class ScenePlayerController : MonoBehaviour
     
     void Update()
     {
-        Move();
+        if (!paused)
+        {
+            Move();
+            if (Input.GetButtonDown("Start1"))
+            {
+                paused = true;
+                Ui_controller.i.pause.SetActive(true);
+                Time.timeScale = 0f;
+            }
+            if (!shopopen)
+            {
+                if (Input.GetButtonDown("Fuel1"))
+                {
+                    shopopen = true;
+                    Ui_controller.i.shop.SetActive(true);
+                    Time.timeScale = 0f;
+                }
+            }
+            else if (Input.GetButtonDown("Fuel1"))
+            {
+                shopopen = false;
+                Ui_controller.i.shop.SetActive(false);
+                Time.timeScale = 1f;
+            }
+        }
+        else if (Input.GetButtonDown("Start1"))
+        {
+            paused = false;
+            Ui_controller.i.pause.SetActive(false);
+            Time.timeScale = 1f;
+        }
+
+
+
     }
 
     public void Move()
@@ -50,8 +87,8 @@ public class ScenePlayerController : MonoBehaviour
 
         if (!moving && Input.GetAxis("Fire1") != 0)
         {
-            //SceneManager.LoadScene("["+ (departure.x + moveCount.x).ToString() +"][" + (departure.y + moveCount.y).ToString() + "]");
-            SceneManager.LoadScene("Pruebas sector");
+            SceneManager.LoadScene("["+ (departure.x + moveCount.x).ToString() +"][" + (departure.y + moveCount.y).ToString() + "]");
+            //SceneManager.LoadScene("Pruebas sector");
             PlayerStats.i.destiny = new Vector2Int(departure.x + moveCount.x, departure.y + moveCount.y);
         }
     }
@@ -61,6 +98,18 @@ public class ScenePlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         moving = false;
         transform.position = new Vector3Int(departure.x + moveCount.x, 0, departure.y + moveCount.y);
+    }
+
+    public void Exit()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void Contine()
+    {
+        paused = false;
+        Ui_controller.i.pause.SetActive(false);
+        Time.timeScale = 1f;
     }
 
 }

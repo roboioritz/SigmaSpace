@@ -16,6 +16,7 @@ public class Asteroid : MonoBehaviour
     public GameObject esplosion;
 
     private float size;
+    private bool start;
 
     /*private void Awake()
     {
@@ -23,18 +24,19 @@ public class Asteroid : MonoBehaviour
         {
             Vel = new Vector2(Random.Range(-3.0f, 3.0f), Random.Range(-3.0f, 3.0f));
         }
-        hp = 5;
+        //hp = 5;
     }*/
 
-    private void Awake()
+    /*private void Awake()
     {
-        if (type != "Metalic") LevelManager.i.SendMessage("Add");
-    }
+        
+    }*/
 
     private void Start()
     {
-        
-        if (Vel == Vector2.zero)
+        if (type != "Metalic") LevelManager.i.SendMessage("Add");
+
+        /*if (Vel == Vector2.zero)
         {
             Vel = new Vector2(Random.Range(-1.0f * Lvl, 1.0f * Lvl), Random.Range(-1.0f * Lvl, 1.0f * Lvl));
         }
@@ -45,12 +47,30 @@ public class Asteroid : MonoBehaviour
         }
 
         size = hp;
-        transform.rotation = new Quaternion (Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360),0);
+        transform.rotation = new Quaternion (Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360),0);*/
     }
 
 
     void Update()
     {
+        if (!start)
+        {
+            if (Vel == Vector2.zero)
+            {
+                Vel = new Vector2(Random.Range(-1.0f * Lvl, 1.0f * Lvl), Random.Range(-1.0f * Lvl, 1.0f * Lvl));
+            }
+
+            if (rotVel == Vector3.zero)
+            {
+                rotVel = new Vector3(Random.Range(-20.0f, 20.0f), Random.Range(-20.0f, 20.0f), Random.Range(-20.0f, 20.0f));
+            }
+
+            //size = hp;
+            transform.rotation = new Quaternion(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360), 0);
+            start = true;
+        }
+
+
         transform.Translate(Vel.x * Time.deltaTime, 0, Vel.y * Time.deltaTime,Space.World);
         transform.Rotate(rotVel * Time.deltaTime,Space.Self);
         
@@ -59,7 +79,7 @@ public class Asteroid : MonoBehaviour
         if (type == "Normal")
         {
             transform.localScale = new Vector3(1f + 0.02f * size, 1f + 0.02f * size, 1f + 0.02f * size);
-            GetComponent<Circunnavigation>().size = 1f + 0.09f * size;
+            //GetComponent<Circunnavigation>().size = 1f + 0.09f * size;
         }
 
         if (type == "Comet")
@@ -108,6 +128,7 @@ public class Asteroid : MonoBehaviour
         }
         if (dropPrefab2 != null)for (int i = 0; i < value; i++) Instantiate(dropPrefab2, transform.position, Quaternion.identity);
         LevelManager.i.SendMessage("Remove");
+        Instantiate(esplosion,transform.position,transform.rotation);
         Destroy(gameObject);
     }
 

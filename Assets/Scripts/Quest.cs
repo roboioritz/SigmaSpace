@@ -5,36 +5,41 @@ using UnityEngine;
 public class Quest : MonoBehaviour
 {
     public bool isActive;
-    //hola
+    public int missionN;
     public string title;
     public string description;
     public string completionDescription;
     public string reward;
-    public GameObject playerStats;
+    //public GameObject playerStats;
 
-    public List<Level> levels;
+    public int[] levels;
     public List<Quest> next;
 
     private int amount;
 
+    private void Start()
+    {
+        //isActive = PlayerStats.i.quests[missionN];
+    }
+
     public void Update()
     {
+        isActive = PlayerStats.i.quests[missionN];
         if (isActive)
         {
             amount = 0;
-            foreach (Level l in levels)
+            for(int i = 0; i < levels.Length; i++)
             {
-                if (l.state==2) amount++;
+                if (PlayerStats.i.levels[i] == 2) amount++;
             }
-            if (amount == levels.Count) Completed();
+            if (amount == levels.Length) Completed();
         }
     }
 
     private void Completed()
     {
-        playerStats.SendMessage(""+reward);
-        foreach (Quest q in next) q.isActive = true;
+        PlayerStats.i.SendMessage(""+reward);        
         isActive = false;
-        
+        PlayerStats.i.quests[missionN + 1] = true;
     }
 }

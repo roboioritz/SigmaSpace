@@ -26,7 +26,8 @@ public class Tetranium : MonoBehaviour
         if (other.tag == "Player")
         {
             //Play sound recoger tetrenium
-            //other.SendMessage("PickUp"); //PlayerControler.PickUp("Tetranium",Value=1)           
+            //other.SendMessage("PickUp"); //PlayerControler.PickUp("Tetranium",Value=1)          
+            PlayerStats.i.money++;
             Destroy(gameObject);
             
         }
