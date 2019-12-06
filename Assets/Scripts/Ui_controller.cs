@@ -9,7 +9,7 @@ public class Ui_controller : MonoBehaviour
 {
     static public Ui_controller i;
 
-    public List<Quest> Quests;
+    //public List<Quest> Quests;
 
     public GameObject mainMenu;
     public GameObject pause;

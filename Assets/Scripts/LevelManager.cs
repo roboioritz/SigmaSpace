@@ -17,8 +17,9 @@ public class LevelManager : MonoBehaviour
 
     public static bool twoPlayers = false;
     
-    void Awake()
+    void Start()
     {
+        Debug.Log("fallo?");
         Time.timeScale = 1f;
         Ui_controller.i.Enable("ingame");
         i = this;

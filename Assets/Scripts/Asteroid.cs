@@ -34,7 +34,7 @@ public class Asteroid : MonoBehaviour
 
     private void Start()
     {
-        if (type != "Metalic") LevelManager.i.SendMessage("Add");
+        if (type != "Metalic")        LevelManager.i.Add();
 
         /*if (Vel == Vector2.zero)
         {

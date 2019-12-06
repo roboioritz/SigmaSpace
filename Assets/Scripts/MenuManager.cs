@@ -9,7 +9,7 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
-        PlayerStats.i.Resetear();
+        //PlayerStats.i.Resetear();
         Ui_controller.i.Enable("mainmenu");
     }
     
