@@ -8,12 +8,14 @@ public class SceneController : MonoBehaviour
     public List<Level> Levels;
     //public List<Quest> Quests;
     public GameObject player;
+    public Ui_controller UI;
     //public int[,] stages = new int[5,5];
     public Level[,] stages = new Level[5, 5];
 
     private void Start()
     {
-        Ui_controller.i.Enable("ingame");
+        //Ui_controller.i.Enable("ingame");
+        UI.Enable("ingame");
 
         int count = 0;
         for (int i = 0; i < 5; i++)

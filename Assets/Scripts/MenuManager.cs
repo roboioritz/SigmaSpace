@@ -8,7 +8,8 @@ public class MenuManager : MonoBehaviour
     public GameObject playerstats;    
 
     void Start()
-    {
+    {        
+        Screen.SetResolution(2024,970,false); //1024/485 funciona proporcion 0.4736  1920/910 
         //PlayerStats.i.Resetear();
         Ui_controller.i.Enable("mainmenu");
     }

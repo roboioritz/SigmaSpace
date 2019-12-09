@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     static public Vector3 posP2;
     public GameObject Player1;
     public GameObject Player2;
+    public Ui_controller UI;
     public bool start = false;
     public int asteroidCount;
 
@@ -18,10 +19,11 @@ public class LevelManager : MonoBehaviour
     public static bool twoPlayers = false;
     
     void Start()
-    {
+    {       
         Debug.Log("fallo?");
         Time.timeScale = 1f;
-        Ui_controller.i.Enable("ingame");
+        //Ui_controller.i.Enable("ingame");
+        UI.Enable("ingame");
         i = this;
         Instantiate(Player1, transform.position, Quaternion.identity);
     }
