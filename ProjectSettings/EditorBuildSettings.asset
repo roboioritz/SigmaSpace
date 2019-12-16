@@ -81,6 +81,9 @@ EditorBuildSettings:
     path: Assets/Scenes/[2][0].unity
     guid: ec3a7ca06bad9f545924bdcecf0586d0
   - enabled: 1
+    path: Assets/Scenes/Pruebas sector.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
     path: Assets/Scenes/[2][1].unity
     guid: 8d006df3927b2454b8d6f112b9b6c854
   - enabled: 1

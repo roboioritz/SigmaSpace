@@ -23,14 +23,14 @@ public class PlayerController : MonoBehaviour
     private float rotSpeed;
     private bool isfuel = false;
     private bool inmune = false;
-    private Vector3 inertia;
+    public Vector3 inertia;
     private float fuel;
     private float countdown = 0;
     private string axis1;
     private string axis2;
     private string axis3;
     private string axis4;
-
+    public float limit;
 
     void Start()
     {
@@ -44,8 +44,8 @@ public class PlayerController : MonoBehaviour
         axis2 = "Horizontal" + player;
         axis3 = "Fire" + player;
         axis4 = "Special" + player;
+        inertia = Vector3.zero;
     }
-
     
     void Update()
     {
@@ -55,6 +55,8 @@ public class PlayerController : MonoBehaviour
         Fire();        
         if(countdown>0)countdown --;
 
+        limit = Mathf.Sqrt(Mathf.Pow(inertia.x, 2) + Mathf.Pow(inertia.z, 2));
+        
         //if (Tetranium.tetranium != null) Magnet();
         /*Debug.Log("("+ Mathf.Cos(ship.transform.eulerAngles.y) + "),("+ Mathf.Sin(ship.transform.eulerAngles.y) +")" 
                 + "deg2rad(" + Mathf.Cos(Mathf.Deg2Rad*ship.transform.eulerAngles.y) + "),(" + Mathf.Sin(Mathf.Deg2Rad * ship.transform.eulerAngles.y) + ")"
@@ -72,29 +74,33 @@ public class PlayerController : MonoBehaviour
         fuel = -Input.GetAxis(axis1) * acceleration * Time.deltaTime;
         inertia += new Vector3(-Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Sin(Mathf.Deg2Rad * ship.transform.eulerAngles.y), 0,
                                -Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * ship.transform.eulerAngles.y));
+        if (Mathf.Sqrt(Mathf.Pow(inertia.x, 2) + Mathf.Pow(inertia.z, 2)) > 0.35f)
+        {
+            inertia -= 2 * new Vector3(-Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Sin(Mathf.Deg2Rad * ship.transform.eulerAngles.y), 0,
+                               -Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * ship.transform.eulerAngles.y));
+        }           
+        
         transform.Translate(inertia);
+
         if (Input.GetAxis(axis1) != 0 && !isfuel)
         {
             ani.SetTrigger("isfuel");
             isfuel = true;
             //objeto = Instantiate(trail,trailPoint.transform.position,ship.transform.rotation);
-            //objeto.transform.SetParent(ship.transform);
-            
+            //objeto.transform.SetParent(ship.transform);            
         }
         if (Input.GetAxis(axis1) == 0 && isfuel)
         {
             ani.SetTrigger("notfuel");
-            isfuel = false;            
+            isfuel = false;
         }
     }
 
     private void Rotatate()
     {
-
         //rb.MoveRotation(rb.rotation * Quaternion.Euler(0, Input.GetAxis("Horizontal") * rotSpeedmax * Time.deltaTime, 0));
         //print(Input.GetAxis("Horizontal"));
         ship.transform.Rotate(0, Input.GetAxis(axis2) * rotSpeedmax * Time.deltaTime, 0);
-
     }
 
     private void Fire()
@@ -130,12 +136,9 @@ public class PlayerController : MonoBehaviour
                     Instantiate(explosion,transform.position,transform.rotation);
                     Dead();
                 }
-
             }
-
             //play sound
         }
-
     }
 
     IEnumerator Inmunity()
@@ -143,8 +146,5 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         inmune = false;
         LevelManager.i.SendMessage("GetStart");
-    }
-    
-    
-
+    }      
 }

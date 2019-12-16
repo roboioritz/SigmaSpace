@@ -407,6 +407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player1: {fileID: 7684106584575208749, guid: aea7042c6dc3c464097c4756c78de9f8, type: 3}
   Player2: {fileID: 7684106584575208749, guid: 0ede2e0188a34e94299fcda0e532b638, type: 3}
+  UI: {fileID: 856084161}
   start: 0
   asteroidCount: 4
 --- !u!4 &683375392
@@ -678,6 +679,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7db77a21c3ad2846901fb4796211989, type: 3}
+--- !u!114 &856084161 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5874429222330289937, guid: a7db77a21c3ad2846901fb4796211989,
+    type: 3}
+  m_PrefabInstance: {fileID: 856084160}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dada82191f5580343b9f79aa973f9deb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &860103444
 GameObject:
   m_ObjectHideFlags: 0
