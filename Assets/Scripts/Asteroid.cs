@@ -9,14 +9,18 @@ public class Asteroid : MonoBehaviour
     public string type;
     public float hp;
     public int value;
-    public int Lvl;
+    public int Lvl;    
     
     public GameObject dropPrefab1;
     public GameObject dropPrefab2;
     public GameObject esplosion;
+    public GameObject self;
 
     private float size;
+    private float r1 = 0, r2 = 0, r4 = 0;
+    private int r3;
     private bool start;
+    private bool enablecol;
 
     /*private void Awake()
     {
@@ -35,7 +39,8 @@ public class Asteroid : MonoBehaviour
     private void Start()
     {
         if (type != "Metalic")        LevelManager.i.Add();
-
+        if(r4<1)r4 += Time.deltaTime;
+        if (r4 > 1) enablecol = true;
         /*if (Vel == Vector2.zero)
         {
             Vel = new Vector2(Random.Range(-1.0f * Lvl, 1.0f * Lvl), Random.Range(-1.0f * Lvl, 1.0f * Lvl));
@@ -70,6 +75,20 @@ public class Asteroid : MonoBehaviour
             start = true;
         }
 
+        r1 += Random.Range(-1,1);
+        r2 += Random.Range(-1, 1);
+        r3 = Random.Range(0, 800);
+
+        if (type == "Cuantic")
+        {
+            transform.Translate(Mathf.Sin(r1)*Time.deltaTime*3f,0, Mathf.Cos(r2) * Time.deltaTime * 3f);
+            if (r3 == 1)
+            {
+                GameObject objeto = Instantiate(esplosion, transform.position, Quaternion.identity); Destroy(objeto, 1f);
+                transform.position = new Vector3(Random.Range(-12, 12), 0, Random.Range(-12, 12));
+                GameObject objeto2 = Instantiate(esplosion, transform.position, Quaternion.identity); Destroy(objeto2, 1f);
+            }
+        }
 
         transform.Translate(Vel.x * Time.deltaTime, 0, Vel.y * Time.deltaTime,Space.World);
         transform.Rotate(rotVel * Time.deltaTime,Space.Self);
@@ -107,10 +126,6 @@ public class Asteroid : MonoBehaviour
             if (hp <= 0) Dead();
         }
 
-        /*if (other.tag == "Player")
-        {
-            other.SendMessage("Dead");
-        }*/
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -121,6 +136,13 @@ public class Asteroid : MonoBehaviour
             float module1 = Mathf.Sqrt(Vel.x * Vel.x + Vel.y * Vel.y);
             float module2 = Mathf.Sqrt(direction.x * direction.x + direction.y * direction.y);
             Vel = new Vector2(direction.x * module1 / module2, direction.y * module1 / module2);
+        }
+
+        if (collision.collider.GetComponent<Asteroid>().type == "Twin2"&&enablecol)
+        {
+            Destroy(collision.gameObject);
+            Instantiate(self, collision.transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
     }
 
@@ -140,7 +162,6 @@ public class Asteroid : MonoBehaviour
 
     public void Magnet(Vector3 pos1, Vector3 pos2)
     {
-
         Vector2 dir2 = new Vector2(pos1.x - transform.position.x, pos1.y - transform.position.z);
         Vector2 dir3 = new Vector2(pos2.x - transform.position.x, pos2.y - transform.position.z);
         float dist1 = Mathf.Abs(Mathf.Sqrt(dir2.x * dir2.x + dir2.y * dir2.y));

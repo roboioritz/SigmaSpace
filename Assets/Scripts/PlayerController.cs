@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     private string axis2;
     private string axis3;
     private string axis4;
+    private float damaging;
     public float limit;
 
     void Start()
@@ -56,7 +57,7 @@ public class PlayerController : MonoBehaviour
         if(countdown>0)countdown --;
 
         limit = Mathf.Sqrt(Mathf.Pow(inertia.x, 2) + Mathf.Pow(inertia.z, 2));
-        
+
         //if (Tetranium.tetranium != null) Magnet();
         /*Debug.Log("("+ Mathf.Cos(ship.transform.eulerAngles.y) + "),("+ Mathf.Sin(ship.transform.eulerAngles.y) +")" 
                 + "deg2rad(" + Mathf.Cos(Mathf.Deg2Rad*ship.transform.eulerAngles.y) + "),(" + Mathf.Sin(Mathf.Deg2Rad * ship.transform.eulerAngles.y) + ")"
@@ -67,6 +68,21 @@ public class PlayerController : MonoBehaviour
         /*if (transform.position.y != 0) transform.Translate(0, -transform.position.y * Time.deltaTime, 0);
         if (transform.rotation.x != 0) transform.Rotate(-transform.rotation.x * Time.deltaTime, 0, 0);
         if (transform.rotation.z != 0) transform.Rotate(0, 0, -transform.rotation.z * Time.deltaTime);*/
+
+        if (!inmune && damaging>1)
+        {
+            inmune = true;
+            armor--;
+            StartCoroutine(Inmunity());
+            if (armor < 0)
+            {
+                Instantiate(explosion, transform.position, transform.rotation);
+                Dead();
+            }
+            damaging = 0;
+        }
+
+
     }
 
     private void Fuel()
@@ -138,6 +154,22 @@ public class PlayerController : MonoBehaviour
                 }
             }
             //play sound
+        }
+    }
+
+    private void OnTriggerStay(Collider collision)
+    {
+        if(collision.gameObject.tag == "Thunder")
+        {
+            damaging+=Time.deltaTime;
+        }
+    }
+
+    private void OnTriggerExit(Collider collision)
+    {
+        if (collision.gameObject.tag == "Thunder")
+        {
+            damaging = 0;
         }
     }
 
