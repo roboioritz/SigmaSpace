@@ -38,7 +38,7 @@ public class Asteroid : MonoBehaviour
 
     private void Start()
     {
-        if (type != "Metalic")        LevelManager.i.Add();
+        if (type != "Metalic")        //LevelManager.i.Add();
         if(r4<1)r4 += Time.deltaTime;
         if (r4 > 1) enablecol = true;
         /*if (Vel == Vector2.zero)
@@ -130,6 +130,14 @@ public class Asteroid : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.GetComponent<Asteroid>().type == "Twin2" )
+        {
+            
+            Instantiate(self, collision.transform.position, Quaternion.identity);
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+
         if (collision.collider.tag == "Asteroid" )
         {
             Vector2 direction = new Vector2(transform.position.x - collision.transform.position.x, transform.position.z - collision.transform.position.z);
@@ -138,12 +146,7 @@ public class Asteroid : MonoBehaviour
             Vel = new Vector2(direction.x * module1 / module2, direction.y * module1 / module2);
         }
 
-        if (collision.collider.GetComponent<Asteroid>().type == "Twin2"&&enablecol)
-        {
-            Destroy(collision.gameObject);
-            Instantiate(self, collision.transform.position, Quaternion.identity);
-            Destroy(gameObject);
-        }
+        
     }
 
     private void Dead()

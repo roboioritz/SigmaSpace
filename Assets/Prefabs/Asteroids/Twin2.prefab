@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Vel: {x: 0, y: 0}
   rotVel: {x: 0, y: 0, z: 0}
-  type: Twin1
+  type: Twin2
   hp: 15
   value: 3
   Lvl: 4

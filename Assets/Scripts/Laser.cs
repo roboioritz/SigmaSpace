@@ -26,7 +26,7 @@ public class Laser : MonoBehaviour
 
         Destroy(proyectil);
         moving = 0;
-        Destroy(gameObject,0.25f);
+        Destroy(gameObject);
         Instantiate(fogonazo,transform.position,transform.rotation);
         
 
