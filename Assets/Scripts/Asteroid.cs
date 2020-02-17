@@ -92,9 +92,15 @@ public class Asteroid : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Laser" )
+        if (other.tag == "Laser")
         {
-            GameObject objeto = Instantiate(esplosion,other.transform.position,Quaternion.identity); Destroy(objeto, 1f);
+            GameObject objeto = Instantiate(esplosion, other.transform.position, Quaternion.identity); Destroy(objeto, 1f);
+            if (type == "Tetranium" || type == "Dust")
+            {
+                float r = Random.Range(-1,1);
+            //Instantiate(dropPrefab2, transform.position, Quaternion.identity);
+            Instantiate(dropPrefab2, other.transform.position + new Vector3 (r*0.25f,0,-r * 0.25f), Quaternion.identity);
+            }
             other.SendMessage("Impact");
 
             if(type != "Metalic") hp -= PlayerStats.i.laserLvl+1; //playerStats.Laserlvl en el futuro

@@ -84,8 +84,8 @@ public class ScenePlayerController : MonoBehaviour
 
         if (!moving && Input.GetAxis("Fire1") != 0)
         {
-            SceneManager.LoadScene("["+ (departure.x + moveCount.x).ToString() +"][" + (departure.y + moveCount.y).ToString() + "]");
-            //SceneManager.LoadScene("Pruebas sector");
+            //SceneManager.LoadScene("["+ (departure.x + moveCount.x).ToString() +"][" + (departure.y + moveCount.y).ToString() + "]");
+            SceneManager.LoadScene("Pruebas sector");
             PlayerStats.i.destiny = new Vector2Int(departure.x + moveCount.x, departure.y + moveCount.y);
         }
     }
