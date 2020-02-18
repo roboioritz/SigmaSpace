@@ -8,10 +8,13 @@ public class Enemy : MonoBehaviour
     public Radius radius2;
 
     public GameObject Explosion;
+    public float acceleration =0.1f;
 
     public string type;
     public int hp;
     public int value;
+
+    private Vector3 inertia;
     
     void Start()
     {
@@ -30,8 +33,11 @@ public class Enemy : MonoBehaviour
 
         if(type != "Mine")
         {
-            print("ass");
+            
             transform.LookAt(radius2.OtherPos);
+            inertia += new Vector3(acceleration * Time.deltaTime * Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.y), 0,
+                                   acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.y));
+            transform.Translate(inertia);
         }        
     }
 

@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 7542184590720883125}
   - component: {fileID: 7884181833076477973}
   - component: {fileID: 1673816958663767736}
+  - component: {fileID: 2586806837058107637}
   m_Layer: 0
   m_Name: ExpDrone
   m_TagString: Enemy
@@ -232,6 +233,7 @@ MonoBehaviour:
   radius2: {fileID: 2637849866065364353}
   Explosion: {fileID: 4231320125720878784, guid: bb2cc5767b74d4c42bd2150efd542a26,
     type: 3}
+  acceleration: 0.01
   type: ExpDrone
   hp: 1
   value: 0
@@ -251,6 +253,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 3
+--- !u!114 &2586806837058107637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6230501058064644911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 630a5398b5bb53248a8452ec615f5494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  size: 2
 --- !u!1001 &1230779427794290518
 PrefabInstance:
   m_ObjectHideFlags: 0
