@@ -4,7 +4,9 @@ using UnityEngine;
 
 
 public class PlayerController : MonoBehaviour
-{  
+{
+    public static PlayerController i;
+
     public float acceleration;
     public float rotSpeedmax;
     public float cooldown;
@@ -35,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        i = this;
         StartCoroutine(Inmunity());
         armor = PlayerStats.i.armorLvl;
         cooldown = PlayerStats.i.cooldown;
@@ -179,4 +182,23 @@ public class PlayerController : MonoBehaviour
         inmune = false;
         LevelManager.i.SendMessage("GetStart");
     }      
+
+    public void TakeDamage(Transform Damager)
+    {
+        rb.AddExplosionForce(300, Damager.position, 50);
+        print("aa");
+        if (!inmune )
+        {
+            inmune = true;
+            armor--;
+            StartCoroutine(Inmunity());
+            if (armor < 0)
+            {
+                Instantiate(explosion, transform.position, transform.rotation);
+                Dead();
+            }            
+            
+            
+        }
+    }
 }

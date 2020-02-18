@@ -8,6 +8,7 @@ TagManager:
   - Laser
   - Tetranium
   - Thunder
+  - Enemy
   layers:
   - Default
   - TransparentFX

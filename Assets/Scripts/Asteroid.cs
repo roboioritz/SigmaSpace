@@ -147,7 +147,7 @@ public class Asteroid : MonoBehaviour
         }
 
         
-    }
+    }    
 
     private void Dead()
     {
