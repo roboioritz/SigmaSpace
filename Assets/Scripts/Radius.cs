@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Radius : MonoBehaviour
 {
-    public bool Onradius;    
+    public bool Onradius;
+    public Transform OtherPos;
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
-            Onradius = true;            
+            Onradius = true;
+            OtherPos = other.transform;
         }
     }
 

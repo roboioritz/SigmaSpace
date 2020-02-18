@@ -24,10 +24,15 @@ public class Enemy : MonoBehaviour
         {
             if (radius1.Onradius)
             {
-                StartCoroutine(Explode());
-                
+                StartCoroutine(Explode());                
             }            
         }
+
+        if(type != "Mine")
+        {
+            print("ass");
+            transform.LookAt(radius2.OtherPos);
+        }        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -39,19 +44,7 @@ public class Enemy : MonoBehaviour
             if (hp <= 0) Dead();
             
         }
-    }
-
-    /*private void OnCollisionEnter(Collision other)
-    {
-        if (other.collider.tag == "Laser"&&Vector3.Magnitude(other.collider.transform.position - transform.position) <= 1)
-        {
-            hp -= PlayerStats.i.laserLvl + 1;
-            if (hp <= 0) Dead();
-            
-        }
-    }*/
-
-
+    }    
 
     IEnumerator Explode()
     {
