@@ -26,10 +26,9 @@ public class Tetranium : MonoBehaviour
         if (other.tag == "Player")
         {
             //Play sound recoger tetrenium
-            //other.SendMessage("PickUp"); //PlayerControler.PickUp("Tetranium",Value=1)          
+            //other.SendMessage("PickUp"); //PlayerControler.PickUp("Tetranium",Value=1)
             PlayerStats.i.money++;
             Destroy(gameObject);
-            
         }
 
         if (other.tag == "Asteroid" || other.tag == "Tetranium")
@@ -44,8 +43,7 @@ public class Tetranium : MonoBehaviour
     }
 
     public void Magnet(Vector3 pos1, Vector3 pos2)
-    {
-        
+    {        
         Vector2 dir2 = new Vector2 (pos1.x - transform.position.x, pos1.y - transform.position.z);
         Vector2 dir3 = new Vector2(pos2.x - transform.position.x, pos2.y - transform.position.z);
         float dist1 = Mathf.Abs(Mathf.Sqrt(dir2.x* dir2.x + dir2.y * dir2.y));
@@ -60,5 +58,4 @@ public class Tetranium : MonoBehaviour
             if (dist1 < dist2) { if (dist2 > 1 || dist2 < -1) dir += new Vector2(magnetlvl * Time.deltaTime * dir3.x / Mathf.Pow(dist2, 2), magnetlvl * Time.deltaTime * dir3.y / Mathf.Pow(dist2, 2)); }
         }
     }
-
 }

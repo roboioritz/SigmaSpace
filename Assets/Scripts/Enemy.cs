@@ -8,13 +8,13 @@ public class Enemy : MonoBehaviour
     public Radius radius2;
 
     public GameObject Explosion;
-    public float acceleration =0.1f;
+    public float acceleration =10000000f;
 
     public string type;
     public int hp;
     public int value;
 
-    private Vector3 inertia;
+    public Vector3 inertia;
     
     void Start()
     {
@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
    
     void Update()
     {
-        if(type == "Mine")
+        if(type == "Mine" || type == "ExpDrone")
         {
             if (radius1.Onradius)
             {
@@ -31,14 +31,14 @@ public class Enemy : MonoBehaviour
             }            
         }
 
-        if(type != "Mine")
-        {
-            
+        if(type != "Mine" && radius2.Onradius)
+        {            
             transform.LookAt(radius2.OtherPos);
-            inertia += new Vector3(acceleration * Time.deltaTime * Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.y), 0,
-                                   acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.y));
-            transform.Translate(inertia);
-        }        
+            inertia = new Vector3(acceleration *  Mathf.Sin(Mathf.Deg2Rad * (transform.eulerAngles.y)), 0,
+                                  acceleration *  Mathf.Cos(Mathf.Deg2Rad * (transform.eulerAngles.y)));
+            
+        }
+        transform.Translate(inertia);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -48,8 +48,8 @@ public class Enemy : MonoBehaviour
             other.SendMessage("Impact");
             hp -= PlayerStats.i.laserLvl + 1;
             if (hp <= 0) Dead();
-            
-        }
+        }   
+        
     }    
 
     IEnumerator Explode()
@@ -66,5 +66,4 @@ public class Enemy : MonoBehaviour
         Instantiate(Explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
-
 }

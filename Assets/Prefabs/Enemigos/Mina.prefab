@@ -58,6 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Onradius: 0
+  OtherPos: {fileID: 0}
 --- !u!1 &6230501058064644911
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,6 +73,7 @@ GameObject:
   - component: {fileID: 7542184590720883125}
   - component: {fileID: 7884181833076477973}
   - component: {fileID: 1673816958663767736}
+  - component: {fileID: 173675674324022457}
   m_Layer: 0
   m_Name: Mina
   m_TagString: Enemy
@@ -170,9 +172,11 @@ MonoBehaviour:
   radius2: {fileID: 0}
   Explosion: {fileID: 4231320125720878784, guid: bb2cc5767b74d4c42bd2150efd542a26,
     type: 3}
+  acceleration: 10000000
   type: Mine
   hp: 1
   value: 0
+  inertia: {x: 0, y: 0, z: 0}
 --- !u!54 &1673816958663767736
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -189,3 +193,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 4
   m_CollisionDetection: 3
+--- !u!136 &173675674324022457
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6230501058064644911}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
