@@ -9,6 +9,8 @@ TagManager:
   - Tetranium
   - Thunder
   - Enemy
+  - LaserEnemy
+  - Slow
   layers:
   - Default
   - TransparentFX

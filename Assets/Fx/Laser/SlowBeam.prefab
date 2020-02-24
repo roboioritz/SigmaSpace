@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 3912577940290169611}
   - component: {fileID: 4244510551688748750}
   m_Layer: 0
-  m_Name: LaserLv1
-  m_TagString: Laser
+  m_Name: SlowBeam
+  m_TagString: Slow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3581269832045875271}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.022823, y: 0.57885, z: -3.356}
+  m_LocalPosition: {x: -0.022823, y: 0.58, z: -4.8}
   m_LocalScale: {x: 0.2739268, y: 0.27392694, z: 0.27392694}
   m_Children:
   - {fileID: 3581269833754299219}
@@ -68,7 +68,7 @@ MonoBehaviour:
   proyectil: {fileID: 3581269833754299216}
   fogonazo: {fileID: 3213376679211579824, guid: e419889df65522846a6d4513203a3711,
     type: 3}
-  speed: 15
+  speed: 4
 --- !u!65 &3912577940290169611
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -92,10 +92,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.24753529
-  m_Height: 2.258246
-  m_Direction: 1
-  m_Center: {x: 0, y: -1.15, z: 0}
+  m_Radius: 0.4531325
+  m_Height: 20.680447
+  m_Direction: 0
+  m_Center: {x: -0.103407316, y: 0.19035845, z: -2.7833037e-16}
 --- !u!1 &3581269833458233678
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,8 +121,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3581269833458233678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.287, z: -0}
-  m_LocalScale: {x: -0.18988352, y: -0.18988352, z: -0.18988352}
+  m_LocalPosition: {x: 0, y: -0.28, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3581269832045875270}
   m_RootOrder: 1
@@ -169,28 +169,19 @@ TrailRenderer:
   m_Time: 0.2
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.6
+    widthMultiplier: 5.8
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.23480949
+        value: 0.9240513
         inSlope: -0.005365191
         outSlope: -0.005365191
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
         outWeight: 0.38697803
-      - serializedVersion: 3
-        time: 0.27706093
-        value: 0.23635864
-        inSlope: -0.08902338
-        outSlope: -0.08902338
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.90971607
-        outWeight: 1
       - serializedVersion: 3
         time: 0.316687
         value: 0
@@ -205,8 +196,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.9433962, g: 0.4925881, b: 0.20914915, a: 0.85490197}
-      key1: {r: 1, g: 0.75221604, b: 0.2971698, a: 0.85490197}
+      key0: {r: 1, g: 0.036535647, b: 0, a: 0.85490197}
+      key1: {r: 1, g: 0.03529412, b: 0, a: 0.85490197}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -268,7 +259,7 @@ Transform:
   m_GameObject: {fileID: 3581269833754299216}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.114592746, y: 0.114592746, z: 0.114592746}
+  m_LocalScale: {x: 0.114592746, y: 3.9430647, z: 0.114592746}
   m_Children: []
   m_Father: {fileID: 3581269832045875270}
   m_RootOrder: 0
@@ -356,7 +347,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -462,8 +453,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 0, b: 0, a: 1}
-      maxColor: {r: 0.9339623, g: 0.6101594, b: 0.2863564, a: 1}
+      minColor: {r: 0, g: 1, b: 0.9911163, a: 0.3019608}
+      maxColor: {r: 0, g: 0.9813695, b: 1, a: 0.26666668}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

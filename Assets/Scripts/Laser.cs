@@ -8,28 +8,25 @@ public class Laser : MonoBehaviour
     public GameObject fogonazo;
 
     private int moving = 1;
-
+    public float speed;
 
     void Start()
     {
-        Destroy(gameObject, 4f);
-        
+        if(tag=="Slow") Destroy(gameObject, 3f);
+        else Destroy(gameObject, 4f);        
     }
 
     private void Update()
     {
-        transform.Translate(0, 15 * Time.deltaTime * moving, 0);
+        transform.Translate(0, speed * Time.deltaTime * moving, 0);
     }
 
     public void Impact()
     {
-
         Destroy(proyectil);
         moving = 0;
         Destroy(gameObject);
         Instantiate(fogonazo,transform.position,transform.rotation);
-        
-
     }
 
 }

@@ -8,17 +8,20 @@ public class Enemy : MonoBehaviour
     public Radius radius2;
 
     public GameObject Explosion;
+    public GameObject Proyectile;
     public float acceleration =10000000f;
 
     public string type;
     public int hp;
     public int value;
+    public float cooldown;
+    private float cool;
 
     public Vector3 inertia;
     
     void Start()
     {
-        
+        cool = cooldown;
     }
    
     void Update()
@@ -31,14 +34,42 @@ public class Enemy : MonoBehaviour
             }            
         }
 
-        if(type != "Mine" && radius2.Onradius)
+        if(type == "ExpDrone" && radius2.Onradius)
         {            
             transform.LookAt(radius2.OtherPos);
             inertia = new Vector3(acceleration *  Mathf.Sin(Mathf.Deg2Rad * (transform.eulerAngles.y)), 0,
                                   acceleration *  Mathf.Cos(Mathf.Deg2Rad * (transform.eulerAngles.y)));
             
         }
-        transform.Translate(inertia);
+
+        if (type == "Drone" && radius2.Onradius)
+        {
+            transform.LookAt(radius2.OtherPos);
+            if (radius1.Onradius == false)
+            {                
+                inertia = new Vector3(acceleration  * Mathf.Sin(Mathf.Deg2Rad * (transform.eulerAngles.y)), 0,
+                                      acceleration * Mathf.Cos(Mathf.Deg2Rad * (transform.eulerAngles.y)));
+            }
+
+            if (radius1.Onradius == true)
+            {
+                inertia = new Vector3(acceleration * 0.25f * Mathf.Sin(Mathf.Deg2Rad * (transform.eulerAngles.y)), 0,
+                                      acceleration * 0.25f * Mathf.Cos(Mathf.Deg2Rad * (transform.eulerAngles.y)));
+            }
+
+        }
+        if(type == "Drone"|| type == "Slower")
+        {
+            cool -= Time.deltaTime;
+            if (cool <= 0)
+            {
+                cool = cooldown;
+                Instantiate(Proyectile,transform.position,Quaternion.Euler(90,transform.rotation.eulerAngles.y,0));
+            }
+        }        
+
+        transform.Translate(inertia,Space.World);
+        
     }
 
     private void OnTriggerEnter(Collider other)

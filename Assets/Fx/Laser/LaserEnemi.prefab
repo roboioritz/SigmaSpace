@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 3912577940290169611}
   - component: {fileID: 4244510551688748750}
   m_Layer: 0
-  m_Name: LaserLv1
-  m_TagString: Laser
+  m_Name: LaserEnemi
+  m_TagString: LaserEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   proyectil: {fileID: 3581269833754299216}
   fogonazo: {fileID: 3213376679211579824, guid: e419889df65522846a6d4513203a3711,
     type: 3}
-  speed: 15
+  speed: 7.5
 --- !u!65 &3912577940290169611
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -205,8 +205,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.9433962, g: 0.4925881, b: 0.20914915, a: 0.85490197}
-      key1: {r: 1, g: 0.75221604, b: 0.2971698, a: 0.85490197}
+      key0: {r: 1, g: 0.036535647, b: 0, a: 0.85490197}
+      key1: {r: 1, g: 0.03529412, b: 0, a: 0.85490197}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -356,7 +356,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 0.5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -462,8 +462,8 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 1, g: 0, b: 0, a: 1}
-      maxColor: {r: 0.9339623, g: 0.6101594, b: 0.2863564, a: 1}
+      minColor: {r: 1, g: 0, b: 0.03320074, a: 1}
+      maxColor: {r: 1, g: 0.0060975784, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

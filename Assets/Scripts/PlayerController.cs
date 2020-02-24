@@ -18,14 +18,15 @@ public class PlayerController : MonoBehaviour
     public GameObject trailPoint;
     public GameObject trail;
     public GameObject explosion;
-    public Animator ani;   
+    public Animator ani;
+    public float limit;
+    public Vector3 inertia;
 
     private GameObject objeto;
     private Rigidbody rb;
     private float rotSpeed;
     private bool isfuel = false;
-    private bool inmune = false;
-    public Vector3 inertia;
+    private bool inmune = false;    
     private float fuel;
     private float countdown = 0;
     private string axis1;
@@ -33,7 +34,9 @@ public class PlayerController : MonoBehaviour
     private string axis3;
     private string axis4;
     private float damaging;
-    public float limit;
+    private float slow;
+    private float slowed;
+    
 
     void Start()
     {
@@ -58,6 +61,13 @@ public class PlayerController : MonoBehaviour
         Rotatate();
         Fire();        
         if(countdown>0)countdown --;
+
+        if (slowed > 0)
+        {
+            slowed -= Time.deltaTime;
+            slow = 0.5f;
+        }
+        else slow = 1;
 
         limit = Mathf.Sqrt(Mathf.Pow(inertia.x, 2) + Mathf.Pow(inertia.z, 2));
 
@@ -91,12 +101,12 @@ public class PlayerController : MonoBehaviour
     private void Fuel()
     {
         fuel = -Input.GetAxis(axis1) * acceleration * Time.deltaTime;
-        inertia += new Vector3(-Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Sin(Mathf.Deg2Rad * ship.transform.eulerAngles.y), 0,
-                               -Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * ship.transform.eulerAngles.y));
+        inertia += new Vector3(-Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Sin(Mathf.Deg2Rad * ship.transform.eulerAngles.y) * slow, 0,
+                               -Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * ship.transform.eulerAngles.y) * slow);
         if (Mathf.Sqrt(Mathf.Pow(inertia.x, 2) + Mathf.Pow(inertia.z, 2)) > 0.35f)
         {
-            inertia -= 2 * new Vector3(-Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Sin(Mathf.Deg2Rad * ship.transform.eulerAngles.y), 0,
-                               -Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * ship.transform.eulerAngles.y));
+            inertia -= 2 * new Vector3(-Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Sin(Mathf.Deg2Rad * ship.transform.eulerAngles.y) * slow, 0,
+                               -Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * ship.transform.eulerAngles.y) * slow);
         }           
         
         transform.Translate(inertia);
@@ -156,7 +166,36 @@ public class PlayerController : MonoBehaviour
                     Dead();
                 }
             }
-            //play sound
+            
+        }
+
+        
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "LaserEnemy")
+        {
+            if (!inmune)
+            {
+                inmune = true;
+                armor--;
+                StartCoroutine(Inmunity());
+                if (armor < 0)
+                {
+                    Instantiate(explosion, transform.position, transform.rotation);
+                    Dead();
+                }
+            }
+            other.SendMessage("Impact");
+        }
+
+        if (other.tag == "Slow")
+        {
+            inertia = inertia / 2;
+            slowed = 3;
+            
+
         }
     }
 
