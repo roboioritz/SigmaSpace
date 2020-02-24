@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
         fuel = -Input.GetAxis(axis1) * acceleration * Time.deltaTime;
         inertia += new Vector3(-Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Sin(Mathf.Deg2Rad * ship.transform.eulerAngles.y) * slow, 0,
                                -Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * ship.transform.eulerAngles.y) * slow);
-        if (Mathf.Sqrt(Mathf.Pow(inertia.x, 2) + Mathf.Pow(inertia.z, 2)) > 0.35f)
+        if (Mathf.Sqrt(Mathf.Pow(inertia.x, 2) + Mathf.Pow(inertia.z, 2)) > 0.28f)
         {
             inertia -= 2 * new Vector3(-Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Sin(Mathf.Deg2Rad * ship.transform.eulerAngles.y) * slow, 0,
                                -Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * ship.transform.eulerAngles.y) * slow);

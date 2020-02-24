@@ -34,18 +34,18 @@ public class ScenePlayerController : MonoBehaviour
             }
             if (!shopopen)
             {
-                if (Input.GetButtonDown("Fuel1"))
+                /*if (Input.GetButtonDown("Fuel1"))
                 {
                     shopopen = true;
                     Ui_controller.i.shop.SetActive(true);
                     Time.timeScale = 0f;
-                }
+                }*/
             }
             else if (Input.GetButtonDown("Fuel1"))
             {
-                shopopen = false;
+               /* shopopen = false;
                 Ui_controller.i.shop.SetActive(false);
-                Time.timeScale = 1f;
+                Time.timeScale = 1f;*/
             }
         }
         else if (Input.GetButtonDown("Start1"))
@@ -84,8 +84,8 @@ public class ScenePlayerController : MonoBehaviour
 
         if (!moving && Input.GetAxis("Fire1") != 0)
         {
-            //SceneManager.LoadScene("["+ (departure.x + moveCount.x).ToString() +"][" + (departure.y + moveCount.y).ToString() + "]");
-            SceneManager.LoadScene("Pruebas sector");
+            SceneManager.LoadScene("["+ (departure.x + moveCount.x).ToString() +"][" + (departure.y + moveCount.y).ToString() + "]");
+            //SceneManager.LoadScene("Pruebas sector");
             PlayerStats.i.destiny = new Vector2Int(departure.x + moveCount.x, departure.y + moveCount.y);
         }
     }

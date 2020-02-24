@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     
     void Start()
     {
+
         cool = cooldown;
         if (type == "Hive")
         {
@@ -31,6 +32,7 @@ public class Enemy : MonoBehaviour
         }
         if (type == "Missil")
         {
+            Destroy(gameObject, 10f);
             transform.LookAt(radius2.OtherPos);
             inertia = new Vector3(acceleration * Time.deltaTime * Mathf.Sin(Mathf.Deg2Rad * (transform.eulerAngles.y)), 0,
                                   acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * (transform.eulerAngles.y)));
@@ -121,7 +123,7 @@ public class Enemy : MonoBehaviour
 
     public void Dead()
     {
-        if (radius1.Onradius&&(type=="Mine"||type== "ExpDrone" || type == "Missil")) PlayerController.i.TakeDamage(transform);
+        if (radius1.Onradius && (type == "Mine" || type == "ExpDrone" || type == "Missil")) PlayerController.i.TakeDamage(transform);
         Instantiate(Explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
