@@ -59,6 +59,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Onradius: 0
   OtherPos: {fileID: 0}
+--- !u!1 &4463458756888923147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6304825847883059214}
+  m_Layer: 0
+  m_Name: Deploy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6304825847883059214
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4463458756888923147}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.72, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8915637137553047968}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6035348221698928252
 GameObject:
   m_ObjectHideFlags: 0
@@ -102,7 +132,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 9
+  m_Radius: 12
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &153089588232772538
 MonoBehaviour:
@@ -135,7 +165,7 @@ GameObject:
   - component: {fileID: 2586806837058107637}
   - component: {fileID: 4623965885411532692}
   m_Layer: 0
-  m_Name: Slower
+  m_Name: Misiler
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,6 +185,7 @@ Transform:
   - {fileID: 4612815495817942523}
   - {fileID: 1248298654197155486}
   - {fileID: 6083852445888293964}
+  - {fileID: 6304825847883059214}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -234,10 +265,11 @@ MonoBehaviour:
   radius2: {fileID: 2637849866065364353}
   Explosion: {fileID: 4231320125720878784, guid: bb2cc5767b74d4c42bd2150efd542a26,
     type: 3}
-  Proyectile: {fileID: 3581269832045875271, guid: 94992e01637d87c469c1f3adea8a60cc,
+  Proyectile: {fileID: 6230501058064644911, guid: 6d6f46619afd1974b813fb4d16ed20a7,
     type: 3}
-  acceleration: 0.025
-  type: Slower
+  Deploy: {fileID: 4463458756888923147}
+  acceleration: 0.04
+  type: Misiler
   hp: 1
   value: 0
   cooldown: 5

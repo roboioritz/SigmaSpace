@@ -165,11 +165,11 @@ public class PlayerController : MonoBehaviour
                     Instantiate(explosion,transform.position,transform.rotation);
                     Dead();
                 }
-            }
-            
+            }            
         }
 
         
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -197,6 +197,13 @@ public class PlayerController : MonoBehaviour
             
 
         }
+
+        if (other.tag == "Enemy")
+        {
+            print("ER");
+            other.SendMessage("Dead");
+        }
+
     }
 
     private void OnTriggerStay(Collider collision)

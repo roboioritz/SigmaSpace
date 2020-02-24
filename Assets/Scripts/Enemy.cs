@@ -9,7 +9,8 @@ public class Enemy : MonoBehaviour
 
     public GameObject Explosion;
     public GameObject Proyectile;
-    public float acceleration =10000000f;
+    public GameObject Deploy;
+    public float acceleration;
 
     public string type;
     public int hp;
@@ -22,11 +23,28 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         cool = cooldown;
+        if (type == "Hive")
+        {
+            transform.rotation = Quaternion.Euler(0, Random.Range(-180, 180), 0);
+            inertia = new Vector3(acceleration * Time.deltaTime * Mathf.Sin(Mathf.Deg2Rad * (transform.eulerAngles.y)), 0,
+                                  acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * (transform.eulerAngles.y)));
+        }
+        if (type == "Missil")
+        {
+            transform.LookAt(radius2.OtherPos);
+            inertia = new Vector3(acceleration * Time.deltaTime * Mathf.Sin(Mathf.Deg2Rad * (transform.eulerAngles.y)), 0,
+                                  acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * (transform.eulerAngles.y)));
+        }
     }
    
     void Update()
     {
-        if(type == "Mine" || type == "ExpDrone")
+        if (type == "Misiler")
+        {
+            Deploy.transform.LookAt(radius2.OtherPos);
+        }
+
+        if(type == "Mine" || type == "ExpDrone" || type=="Missil")
         {
             if (radius1.Onradius)
             {
@@ -42,7 +60,7 @@ public class Enemy : MonoBehaviour
             
         }
 
-        if (type == "Drone" && radius2.Onradius)
+        if ((type == "Drone" || type == "Slower" || type == "Misiler") && radius2.Onradius)
         {
             transform.LookAt(radius2.OtherPos);
             if (radius1.Onradius == false)
@@ -58,15 +76,25 @@ public class Enemy : MonoBehaviour
             }
 
         }
-        if(type == "Drone"|| type == "Slower")
+        if (type == "Drone" || type == "Slower"||type == "Misiler") 
+        {
+            cool -= Time.deltaTime;
+            if (cool <= 0 && radius1.Onradius)
+            {
+                cool = cooldown;
+                if(type == "Misiler") Instantiate(Proyectile, Deploy.transform.position, Deploy.transform.rotation);
+                else Instantiate(Proyectile,transform.position, Quaternion.Euler(90, transform.rotation.eulerAngles.y, 0));
+            }
+        }
+        if ( type == "Hive")
         {
             cool -= Time.deltaTime;
             if (cool <= 0)
-            {
+            {                
                 cool = cooldown;
-                Instantiate(Proyectile,transform.position,Quaternion.Euler(90,transform.rotation.eulerAngles.y,0));
+                Instantiate(Proyectile,Deploy.transform.position, Quaternion.Euler(0, transform.rotation.eulerAngles.y,0));
             }
-        }        
+        }
 
         transform.Translate(inertia,Space.World);
         
@@ -93,7 +121,7 @@ public class Enemy : MonoBehaviour
 
     public void Dead()
     {
-        if (radius1.Onradius&&(type=="Mine"||type=="ExpDrone")) PlayerController.i.TakeDamage(transform);
+        if (radius1.Onradius&&(type=="Mine"||type== "ExpDrone" || type == "Missil")) PlayerController.i.TakeDamage(transform);
         Instantiate(Explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
