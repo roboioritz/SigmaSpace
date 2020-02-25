@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public Animator ani;
     public float limit;
     public Vector3 inertia;
+    
 
     private GameObject objeto;
     private Rigidbody rb;
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
     private float damaging;
     private float slow;
     private float slowed;
+    private Vector2 overEngine;
     
 
     void Start()
@@ -55,12 +57,23 @@ public class PlayerController : MonoBehaviour
     }
     
     void Update()
-    {
+    {        
         //position = transform.position;
         Fuel();
         Rotatate();
         Fire();        
         if(countdown>0)countdown --;
+
+        if (Mathf.Sign(inertia.x) != Mathf.Sign(Mathf.Sin(Mathf.Deg2Rad * ship.transform.eulerAngles.y)))
+        {
+            overEngine.x = 2.5f + Mathf.Abs(inertia.x);
+        }
+        else overEngine.x = 1;
+        if (Mathf.Sign(inertia.z) != Mathf.Sign(Mathf.Cos(Mathf.Deg2Rad * ship.transform.eulerAngles.y)))
+        {
+            overEngine.y = 2.5f + Mathf.Abs(inertia.z);
+        }
+        else overEngine.y = 1;
 
         if (slowed > 0)
         {
@@ -101,14 +114,17 @@ public class PlayerController : MonoBehaviour
     private void Fuel()
     {
         fuel = -Input.GetAxis(axis1) * acceleration * Time.deltaTime;
-        inertia += new Vector3(-Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Sin(Mathf.Deg2Rad * ship.transform.eulerAngles.y) * slow, 0,
-                               -Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * ship.transform.eulerAngles.y) * slow);
-        if (Mathf.Sqrt(Mathf.Pow(inertia.x, 2) + Mathf.Pow(inertia.z, 2)) > 0.28f)
+        inertia += new Vector3(-Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Sin(Mathf.Deg2Rad * ship.transform.eulerAngles.y) * overEngine.x * slow, 0,
+                               -Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * ship.transform.eulerAngles.y) * overEngine.y * slow);
+        /*if (Mathf.Sqrt(Mathf.Pow(inertia.x, 2) + Mathf.Pow(inertia.z, 2)) > 0.28f)
         {
             inertia -= 2 * new Vector3(-Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Sin(Mathf.Deg2Rad * ship.transform.eulerAngles.y) * slow, 0,
                                -Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * ship.transform.eulerAngles.y) * slow);
-        }           
-        
+        }  */
+
+        if (Mathf.Abs(inertia.x) >= 0.28f) inertia.x = 0.28f * Mathf.Sign(inertia.x);
+        if(Mathf.Abs(inertia.z) >= 0.28f) inertia.z = 0.28f * Mathf.Sign(inertia.z);
+
         transform.Translate(inertia);
 
         if (Input.GetAxis(axis1) != 0 && !isfuel)

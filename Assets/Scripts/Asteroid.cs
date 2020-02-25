@@ -15,12 +15,13 @@ public class Asteroid : MonoBehaviour
     public GameObject dropPrefab2;
     public GameObject esplosion;
     public GameObject self;
+    public GameObject twinOther;
 
     private float size;
     private float r1 = 0, r2 = 0, r4 = 0;
     private int r3;
     private bool start;
-    private bool enablecol;
+    private bool enablecol;  
 
     /*private void Awake()
     {
@@ -58,9 +59,17 @@ public class Asteroid : MonoBehaviour
 
     void Update()
     {
+        if (twinOther == null && type=="Twin1")
+        {
+            transform.SetParent(null);
+            type = "Twin2";
+            start = false;
+        }
+
         if (!start)
         {
-            if (Vel == Vector2.zero)
+            
+            if (Vel == Vector2.zero && type!="Twin1")
             {
                 Vel = new Vector2(Random.Range(-1.0f * Lvl, 1.0f * Lvl), Random.Range(-1.0f * Lvl, 1.0f * Lvl));
             }
@@ -71,7 +80,7 @@ public class Asteroid : MonoBehaviour
             }
 
             //size = hp;
-            transform.rotation = new Quaternion(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360), 0);
+            if(type != "Twin2") transform.rotation = new Quaternion(Random.Range(0, 360), Random.Range(0, 360), Random.Range(0, 360), 0);
             start = true;
         }
 

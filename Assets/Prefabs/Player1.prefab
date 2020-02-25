@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 0.2
-  rotSpeedmax: 300
+  rotSpeedmax: 350
   cooldown: 30
   armor: 0
   player: 1
@@ -184,6 +184,8 @@ MonoBehaviour:
   ani: {fileID: 0}
   limit: 0
   inertia: {x: 0, y: 0, z: 0}
+  Cos: 0
+  overEngine: {x: 0, y: 0}
 --- !u!114 &7684106584575208747
 MonoBehaviour:
   m_ObjectHideFlags: 0
