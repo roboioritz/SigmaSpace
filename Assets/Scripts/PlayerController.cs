@@ -66,12 +66,12 @@ public class PlayerController : MonoBehaviour
 
         if (Mathf.Sign(inertia.x) != Mathf.Sign(Mathf.Sin(Mathf.Deg2Rad * ship.transform.eulerAngles.y)))
         {
-            overEngine.x = 2.5f + Mathf.Abs(inertia.x);
+            overEngine.x = 2f + Mathf.Abs(inertia.x);
         }
         else overEngine.x = 1;
         if (Mathf.Sign(inertia.z) != Mathf.Sign(Mathf.Cos(Mathf.Deg2Rad * ship.transform.eulerAngles.y)))
         {
-            overEngine.y = 2.5f + Mathf.Abs(inertia.z);
+            overEngine.y = 2f + Mathf.Abs(inertia.z);
         }
         else overEngine.y = 1;
 
