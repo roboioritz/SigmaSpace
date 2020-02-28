@@ -483,7 +483,7 @@ Animator:
   m_GameObject: {fileID: 7389647688155869103}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f242afdb0606c0549a9fcc797947e8a0, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3058,16 +3058,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7668394164112597197}
     m_Modifications:
-    - target: {fileID: 1921153089012732995, guid: 53befffa81b805a419393d03b5a784ad,
-        type: 3}
-      propertyPath: m_Name
-      value: PerfilVendedor
-      objectReference: {fileID: 0}
-    - target: {fileID: 1921153089012732995, guid: 53befffa81b805a419393d03b5a784ad,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5896054786204072192, guid: 53befffa81b805a419393d03b5a784ad,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3172,6 +3162,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1921153089012732995, guid: 53befffa81b805a419393d03b5a784ad,
+        type: 3}
+      propertyPath: m_Name
+      value: PerfilVendedor
+      objectReference: {fileID: 0}
+    - target: {fileID: 1921153089012732995, guid: 53befffa81b805a419393d03b5a784ad,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53befffa81b805a419393d03b5a784ad, type: 3}
