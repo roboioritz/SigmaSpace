@@ -10,12 +10,15 @@ public class ScenePlayerController : MonoBehaviour
     public Vector2Int departure;
     public int engine;
     public Vector2Int moveCount;
+    public GameObject Negro;
+    private Animator Negro_ani;
 
     private bool paused;
     private bool shopopen;
 
     void Start()
     {
+        Negro_ani = Negro.GetComponent<Animator>();
         i = this;
         Time.timeScale = 1f;
         transform.position = new Vector3(PlayerStats.i.position.x, 0.1f, PlayerStats.i.position.y);
@@ -102,9 +105,10 @@ public class ScenePlayerController : MonoBehaviour
 
         if (!moving && Input.GetAxis("Fire1") != 0)
         {
-            SceneManager.LoadScene("["+ (departure.x + moveCount.x).ToString() +"][" + (departure.y + moveCount.y).ToString() + "]");
+            StartCoroutine(EnterSector());
+            //SceneManager.LoadScene("["+ (departure.x + moveCount.x).ToString() +"][" + (departure.y + moveCount.y).ToString() + "]");
             //SceneManager.LoadScene("Pruebas sector");
-            PlayerStats.i.destiny = new Vector2Int(departure.x + moveCount.x, departure.y + moveCount.y);
+            //PlayerStats.i.destiny = new Vector2Int(departure.x + moveCount.x, departure.y + moveCount.y);
         }
     }
 
@@ -145,6 +149,16 @@ public class ScenePlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         if (paused) paused = false;
         else paused = true;
+    }
+
+    IEnumerator EnterSector()
+    {
+        Negro_ani.SetTrigger("ZumIn");
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene("[" + (departure.x + moveCount.x).ToString() + "][" + (departure.y + moveCount.y).ToString() + "]");
+        //SceneManager.LoadScene("Pruebas sector");
+        PlayerStats.i.destiny = new Vector2Int(departure.x + moveCount.x, departure.y + moveCount.y);
+
     }
 
 }

@@ -86,7 +86,7 @@ PrefabInstance:
     - target: {fileID: 4340595455326343622, guid: 3393e69dcd95f24499c099722f3f6c58,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.13
+      value: -1.32
       objectReference: {fileID: 0}
     - target: {fileID: 4340595455326343622, guid: 3393e69dcd95f24499c099722f3f6c58,
         type: 3}
@@ -128,6 +128,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3408956062412583342, guid: 3393e69dcd95f24499c099722f3f6c58,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3408956062412583337, guid: 3393e69dcd95f24499c099722f3f6c58,
         type: 3}
       propertyPath: type
@@ -138,11 +143,6 @@ PrefabInstance:
       propertyPath: twinOther
       value: 
       objectReference: {fileID: 2449850441758227265}
-    - target: {fileID: 3408956062412583342, guid: 3393e69dcd95f24499c099722f3f6c58,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3393e69dcd95f24499c099722f3f6c58, type: 3}
 --- !u!1 &2449850441134989925 stripped
@@ -182,7 +182,7 @@ PrefabInstance:
     - target: {fileID: 4340595455326343622, guid: 3393e69dcd95f24499c099722f3f6c58,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.17
+      value: 1.41
       objectReference: {fileID: 0}
     - target: {fileID: 4340595455326343622, guid: 3393e69dcd95f24499c099722f3f6c58,
         type: 3}
@@ -224,6 +224,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3408956062412583342, guid: 3393e69dcd95f24499c099722f3f6c58,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3408956062412583337, guid: 3393e69dcd95f24499c099722f3f6c58,
         type: 3}
       propertyPath: type
@@ -234,11 +239,6 @@ PrefabInstance:
       propertyPath: twinOther
       value: 
       objectReference: {fileID: 2449850441134989925}
-    - target: {fileID: 3408956062412583342, guid: 3393e69dcd95f24499c099722f3f6c58,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3393e69dcd95f24499c099722f3f6c58, type: 3}
 --- !u!1 &2449850441758227265 stripped
