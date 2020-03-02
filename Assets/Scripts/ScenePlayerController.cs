@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class ScenePlayerController : MonoBehaviour
 {
+    static public ScenePlayerController i;
     public bool moving;
     public Vector2Int departure;
     public int engine;
@@ -15,6 +16,7 @@ public class ScenePlayerController : MonoBehaviour
 
     void Start()
     {
+        i = this;
         Time.timeScale = 1f;
         transform.position = new Vector3(PlayerStats.i.position.x, 0.1f, PlayerStats.i.position.y);
         departure = PlayerStats.i.position;
@@ -34,19 +36,19 @@ public class ScenePlayerController : MonoBehaviour
             }
             if (!shopopen)
             {
-                /*if (Input.GetButtonDown("Fuel1"))
+                if (Input.GetKeyDown(KeyCode.Q))
                 {
                     shopopen = true;
-                    Ui_controller.i.shop.SetActive(true);
-                    Time.timeScale = 0f;
-                }*/
+                    Ui_controller.i.Enable("shop");
+                    //Time.timeScale = 0f;
+                }
             }
-            else if (Input.GetButtonDown("Fuel1"))
+            /*else if (Input.GetButtonDown("Fuel1"))
             {
                /* shopopen = false;
                 Ui_controller.i.shop.SetActive(false);
-                Time.timeScale = 1f;*/
-            }
+                Time.timeScale = 1f;
+            }*/
         }
         else if (Input.GetButtonDown("Start1"))
         {
@@ -84,8 +86,8 @@ public class ScenePlayerController : MonoBehaviour
 
         if (!moving && Input.GetAxis("Fire1") != 0)
         {
-            //SceneManager.LoadScene("["+ (departure.x + moveCount.x).ToString() +"][" + (departure.y + moveCount.y).ToString() + "]");
-            SceneManager.LoadScene("Pruebas sector");
+            SceneManager.LoadScene("["+ (departure.x + moveCount.x).ToString() +"][" + (departure.y + moveCount.y).ToString() + "]");
+            //SceneManager.LoadScene("Pruebas sector");
             PlayerStats.i.destiny = new Vector2Int(departure.x + moveCount.x, departure.y + moveCount.y);
         }
     }
@@ -106,6 +108,12 @@ public class ScenePlayerController : MonoBehaviour
     {
         paused = false;
         Ui_controller.i.pause.SetActive(false);
+        Time.timeScale = 1f;
+    }
+
+    public void ShopClose()
+    {
+        shopopen = false;
         Time.timeScale = 1f;
     }
 

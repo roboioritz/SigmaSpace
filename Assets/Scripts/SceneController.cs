@@ -93,10 +93,10 @@ public class SceneController : MonoBehaviour
                     PlayerStats.i.laserLvl++;
                 }break;
             case "magnet":
-                if (PlayerStats.i.money >= (PlayerStats.i.laserLvl * 10 + 10) && PlayerStats.i.laserLvl <= 3)
+                if (PlayerStats.i.money >= (PlayerStats.i.magnetLvl * 10 + 10) && PlayerStats.i.magnetLvl <= 3)
                 {
-                    PlayerStats.i.money -= (PlayerStats.i.laserLvl * 10 + 10);
-                    PlayerStats.i.laserLvl++;
+                    PlayerStats.i.money -= (PlayerStats.i.magnetLvl * 10 + 10);
+                    PlayerStats.i.magnetLvl++;
                 }break;
         }
     }

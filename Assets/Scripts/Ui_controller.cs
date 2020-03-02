@@ -15,6 +15,12 @@ public class Ui_controller : MonoBehaviour
     public GameObject pause;
     public GameObject shop;
     public GameObject ingame;
+    public GameObject load;
+    public GameObject options;
+    public Animator shop_ani;
+    public Animator load_ani;
+    public Animator options_ani;
+
 
     public Text shopengine;
     public Text shoparmor;
@@ -33,6 +39,9 @@ public class Ui_controller : MonoBehaviour
     void Start()
     {
         i = this;
+        if (shop != null) shop_ani = shop.GetComponent<Animator>();
+        if (load != null) load_ani = load.GetComponent<Animator>();
+        if (options != null) options_ani = options.GetComponent<Animator>();
     }
     
     void Update()
@@ -79,7 +88,19 @@ public class Ui_controller : MonoBehaviour
                 break;
             case "cristals":
                 shop.SetActive(true);
-                break;            
+                break;
+            case "shop":
+                shop.SetActive(true);
+                shop_ani.SetTrigger("Enable");
+                break;
+            case "load":
+                load.SetActive(true);
+                load_ani.SetTrigger("Enable");
+                break;
+            case "options":
+                options.SetActive(true);
+                options_ani.SetTrigger("Enable");
+                break;
         }
     }
 
@@ -99,6 +120,38 @@ public class Ui_controller : MonoBehaviour
             case "cristals":
                 shop.SetActive(false);
                 break;
+            case "shop":
+                StartCoroutine(WaitShop());
+                shop_ani.SetTrigger("Disable");
+                break;
+            case "load":
+                StartCoroutine(WaitLoad());
+                load_ani.SetTrigger("Disable");
+                break;
+            case "options":
+                StartCoroutine(WaitOptions());
+                options_ani.SetTrigger("Disable");
+                break;
         }
     }
+
+    IEnumerator WaitShop()
+    {
+        yield return new WaitForSeconds(0.6666f);
+        shop.SetActive(false);
+        ScenePlayerController.i.ShopClose();
+    }
+
+    IEnumerator WaitLoad()
+    {
+        yield return new WaitForSeconds(0.6666f);
+        load.SetActive(false);
+    }
+
+    IEnumerator WaitOptions()
+    {
+        yield return new WaitForSeconds(0.6666f);
+        options.SetActive(false);
+    }
+
 }
