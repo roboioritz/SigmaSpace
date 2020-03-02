@@ -29,7 +29,7 @@ public class LevelManager : MonoBehaviour
    
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Escape)) Exit();
+        if (Input.GetKeyDown(KeyCode.Escape)) Exit();
         if (!paused)
         {
             posP1 = Player1.transform.position;
