@@ -29,7 +29,7 @@ public class LevelManager : MonoBehaviour
    
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) Exit();
+        //if (Input.GetKeyDown(KeyCode.Escape)) Exit();
         if (!paused)
         {
             posP1 = Player1.transform.position;
@@ -48,19 +48,28 @@ public class LevelManager : MonoBehaviour
                 StartCoroutine(Back());
             }
 
-            if (Input.GetButtonDown("Start1"))
+            /*if (Input.GetButtonDown("Start1"))
             {
                 paused = true;
                 Ui_controller.i.pause.SetActive(true);
                 Time.timeScale = 0f;
-            }
+            }*/
         }
-        else if (Input.GetButtonDown("Start1"))
+        /*else if (Input.GetButtonDown("Start1"))
         {
             paused = false;
             Ui_controller.i.pause.SetActive(false);
             Time.timeScale = 1f;
-        }
+        }*/
+
+        /*if (Input.GetKeyDown(KeyCode.Escape) && paused == false)
+        {
+            //StartCoroutine(PauseWait());
+            paused = true;
+            Ui_controller.i.Enable("sectorexit");
+            Time.timeScale = 0f;
+        }        */
+
     }
 
     public void GetStart()
@@ -92,12 +101,13 @@ public class LevelManager : MonoBehaviour
     public void Exit()
     {
         SceneManager.LoadScene("LevelScene");
-    }
+    }    
 
-    public void Contine()
+    /*public void ExitClose()
     {
         paused = false;
-        Ui_controller.i.pause.SetActive(false);
         Time.timeScale = 1f;
-    }
+        Ui_controller.i.Disable("sectorexit");
+    }*/
+
 }

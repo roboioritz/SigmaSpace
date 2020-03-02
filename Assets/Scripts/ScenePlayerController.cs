@@ -28,12 +28,13 @@ public class ScenePlayerController : MonoBehaviour
         if (!paused)
         {
             Move();
-            if (Input.GetButtonDown("Start1"))
+
+            /*if (Input.GetButtonDown("Start1"))
             {
                 paused = true;
                 Ui_controller.i.pause.SetActive(true);
                 Time.timeScale = 0f;
-            }
+            }*/
             if (!shopopen)
             {
                 if (Input.GetKeyDown(KeyCode.Q))
@@ -50,12 +51,27 @@ public class ScenePlayerController : MonoBehaviour
                 Time.timeScale = 1f;
             }*/
         }
-        else if (Input.GetButtonDown("Start1"))
+        /*else if (Input.GetButtonDown("Start1"))
         {
             paused = false;
             Ui_controller.i.pause.SetActive(false);
             Time.timeScale = 1f;
+        }*/
+
+        if (Input.GetKeyDown(KeyCode.Escape)&&paused==false)
+        {
+            StartCoroutine(PauseWait());
+            Ui_controller.i.Enable("sceneexit");
+            //Time.timeScale = 0f;
         }
+        if (Input.GetKeyDown(KeyCode.Escape) && paused == true)
+        {
+            StartCoroutine(PauseWait());
+            Ui_controller.i.Disable("sceneexit");
+            //Time.timeScale = 1f;
+        }
+
+
     }
 
     public void Move()
@@ -115,6 +131,20 @@ public class ScenePlayerController : MonoBehaviour
     {
         shopopen = false;
         Time.timeScale = 1f;
+    }
+
+    public void ExitClose()
+    {
+        paused = false;
+        //Time.timeScale = 1f;
+        Ui_controller.i.Disable("sceneexit");
+    }
+
+    IEnumerator PauseWait()
+    {
+        yield return new WaitForSeconds(0.2f);
+        if (paused) paused = false;
+        else paused = true;
     }
 
 }

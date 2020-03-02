@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class Ui_controller : MonoBehaviour
@@ -17,11 +18,16 @@ public class Ui_controller : MonoBehaviour
     public GameObject ingame;
     public GameObject load;
     public GameObject options;
+    public GameObject SceneExit;
+    public GameObject SectorExit;
+
+    public GameObject lives;
+    public GameObject liveprefab;
+
     public Animator shop_ani;
     public Animator load_ani;
     public Animator options_ani;
-
-
+    
     public Text shopengine;
     public Text shoparmor;
     public Text shoplaser;
@@ -71,6 +77,11 @@ public class Ui_controller : MonoBehaviour
             else
                 shopmagnet.text = "MAX";
         
+        if(SceneManager.GetActiveScene().name!= "MainMenu" && SceneManager.GetActiveScene().name != "LevelScene")
+        {
+            //46.8f
+        }
+
     }
 
     public void Enable(string menu)
@@ -100,6 +111,12 @@ public class Ui_controller : MonoBehaviour
             case "options":
                 options.SetActive(true);
                 options_ani.SetTrigger("Enable");
+                break;
+            case "sceneexit":
+                SceneExit.SetActive(true);
+                break;
+            case "sectorexit":
+                SectorExit.SetActive(true);
                 break;
         }
     }
@@ -132,6 +149,12 @@ public class Ui_controller : MonoBehaviour
                 StartCoroutine(WaitOptions());
                 options_ani.SetTrigger("Disable");
                 break;
+            case "sceneexit":
+                SceneExit.SetActive(false);
+                break;
+            case "sectorexit":
+                SectorExit.SetActive(false);
+                break;
         }
     }
 
@@ -153,5 +176,15 @@ public class Ui_controller : MonoBehaviour
         yield return new WaitForSeconds(0.6666f);
         options.SetActive(false);
     }
+
+    public void SectorExitYes()
+    {
+        LevelManager.i.Exit();
+    }
+
+   /* public void SectorExitNo()
+    {
+        LevelManager.i.ExitClose();
+    }*/
 
 }
