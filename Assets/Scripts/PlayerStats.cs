@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+    public string FileName;
     public static PlayerStats i;
     public Vector2Int position;
     public Vector2Int destiny;
@@ -32,8 +33,5 @@ public class PlayerStats : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void Engine()
-    {
-        engineLvl++;
-    }
+    
 }

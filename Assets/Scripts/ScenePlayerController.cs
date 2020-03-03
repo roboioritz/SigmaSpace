@@ -26,8 +26,8 @@ public class ScenePlayerController : MonoBehaviour
         transform.position = new Vector3(PlayerStats.i.position.x, 0.1f, PlayerStats.i.position.y);
         departure = PlayerStats.i.position;
         engine = PlayerStats.i.engineLvl;
-    }
-    
+    }    
+
     void Update()
     {
         if (!paused)
