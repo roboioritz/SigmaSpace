@@ -11,10 +11,12 @@ public class ScenePlayerController : MonoBehaviour
     public int engine;
     public Vector2Int moveCount;
     public GameObject Negro;
+    public GameObject camera;
     private Animator Negro_ani;
 
     private bool paused;
     private bool shopopen;
+    private bool entering = false;
 
     void Start()
     {
@@ -103,8 +105,9 @@ public class ScenePlayerController : MonoBehaviour
 
         if (moving) transform.Translate(2*Time.deltaTime,0,0);
 
-        if (!moving && Input.GetAxis("Fire1") != 0)
+        if (!moving && Input.GetAxis("Fire1") != 0 && !entering)
         {
+            entering = true;
             StartCoroutine(EnterSector());
             //SceneManager.LoadScene("["+ (departure.x + moveCount.x).ToString() +"][" + (departure.y + moveCount.y).ToString() + "]");
             //SceneManager.LoadScene("Pruebas sector");
@@ -154,6 +157,7 @@ public class ScenePlayerController : MonoBehaviour
     IEnumerator EnterSector()
     {
         Negro_ani.SetTrigger("ZumIn");
+        camera.SendMessage("ZumIn");
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene("[" + (departure.x + moveCount.x).ToString() + "][" + (departure.y + moveCount.y).ToString() + "]");
         //SceneManager.LoadScene("Pruebas sector");

@@ -1109,6 +1109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 348563974}
   smooth: 0.01
+  ani: {fileID: 0}
 --- !u!1 &340574127
 GameObject:
   m_ObjectHideFlags: 0
@@ -1252,6 +1253,11 @@ PrefabInstance:
       propertyPath: Negro
       value: 
       objectReference: {fileID: 743752035}
+    - target: {fileID: 4916638099158992735, guid: 8ee0ac4e1d4e2604c86ac843015cb7c7,
+        type: 3}
+      propertyPath: camera
+      value: 
+      objectReference: {fileID: 311013121}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ee0ac4e1d4e2604c86ac843015cb7c7, type: 3}
 --- !u!114 &348563973 stripped
