@@ -34,6 +34,9 @@ public class FileData
         laserLvl = PlayerStats.laserLvl;
         armorLvl = PlayerStats.armorLvl;
         magnetLvl = PlayerStats.magnetLvl;
+
+        money = PlayerStats.money;
+
         levels = new int[25];
         for(int i = 0; i < 25; i++) { levels[i] = PlayerStats.levels[i]; }
     }

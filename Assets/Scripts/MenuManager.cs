@@ -16,16 +16,16 @@ public class MenuManager : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Return)|| Input.GetButton("Start1"))
+        /*if (Input.GetKeyDown(KeyCode.Return)|| Input.GetButton("Start1"))
         {
             Instantiate(playerstats, transform.position, transform.rotation);
             SceneManager.LoadScene("LevelScene");
-        }
+        }*/
     }
 
     public void Play()
     {
-        Instantiate(playerstats, transform.position, transform.rotation);
+        //Instantiate(playerstats, transform.position, transform.rotation);
         SceneManager.LoadScene("LevelScene");
     }
 

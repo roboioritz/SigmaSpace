@@ -33,5 +33,20 @@ public class PlayerStats : MonoBehaviour
         Destroy(gameObject);
     }
 
-    
+    public void Load(SaveFile data)
+    {
+        FileName = data.FileName;
+        position.x = data.position.x; position.y = data.position.y;
+        destiny.x = data.destiny.x; destiny.y = data.destiny.y;
+
+        cooldown = data.cooldown;
+        engineLvl = data.engineLvl;
+        laserLvl = data.laserLvl;
+        armorLvl = data.armorLvl;
+        magnetLvl = data.magnetLvl;
+        money = data.money;
+        levels = new int[25];
+        for (int i = 0; i < 25; i++) { levels[i] = data.levels[i]; }
+    }
+
 }

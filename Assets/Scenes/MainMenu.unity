@@ -120,6 +120,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &295948360 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6050816324188260073, guid: a7db77a21c3ad2846901fb4796211989,
+    type: 3}
+  m_PrefabInstance: {fileID: 7668394164856888139}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16a875f9f3feb24ab6127ef9260bb46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &641085491
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,6 +351,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1052254908 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4592671221676875610, guid: a7db77a21c3ad2846901fb4796211989,
+    type: 3}
+  m_PrefabInstance: {fileID: 7668394164856888139}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1134353165 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4012266385596533113, guid: a7db77a21c3ad2846901fb4796211989,
@@ -935,11 +953,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 641085492}
+      objectReference: {fileID: 295948360}
     - target: {fileID: 5418879204982542384, guid: a7db77a21c3ad2846901fb4796211989,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Play
+      value: ButtoPush
       objectReference: {fileID: 0}
     - target: {fileID: 5418879204982542384, guid: a7db77a21c3ad2846901fb4796211989,
         type: 3}
@@ -969,7 +987,7 @@ PrefabInstance:
     - target: {fileID: 3868391905035812192, guid: a7db77a21c3ad2846901fb4796211989,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5342666574137909524, guid: a7db77a21c3ad2846901fb4796211989,
         type: 3}
@@ -989,7 +1007,7 @@ PrefabInstance:
     - target: {fileID: 9031151566954607103, guid: a7db77a21c3ad2846901fb4796211989,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4864856080431507367, guid: a7db77a21c3ad2846901fb4796211989,
         type: 3}
@@ -1017,5 +1035,46 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 1408162d200f440479b12f25f3273101,
         type: 3}
+    - target: {fileID: 206786801815956877, guid: a7db77a21c3ad2846901fb4796211989,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5342666574137909522, guid: a7db77a21c3ad2846901fb4796211989,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706327488030743765, guid: a7db77a21c3ad2846901fb4796211989,
+        type: 3}
+      propertyPath: FileName
+      value: File 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628701704071277297, guid: a7db77a21c3ad2846901fb4796211989,
+        type: 3}
+      propertyPath: FileName
+      value: File 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6050816324188260073, guid: a7db77a21c3ad2846901fb4796211989,
+        type: 3}
+      propertyPath: InputField
+      value: 
+      objectReference: {fileID: 1052254908}
+    - target: {fileID: 6050816324188260073, guid: a7db77a21c3ad2846901fb4796211989,
+        type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 8739137164341402952, guid: 5511bf1fa25aea044b0b8787b1d1b5d4,
+        type: 3}
+    - target: {fileID: 6050816324188260073, guid: a7db77a21c3ad2846901fb4796211989,
+        type: 3}
+      propertyPath: FileName
+      value: File 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5253948919161231095, guid: a7db77a21c3ad2846901fb4796211989,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7db77a21c3ad2846901fb4796211989, type: 3}
