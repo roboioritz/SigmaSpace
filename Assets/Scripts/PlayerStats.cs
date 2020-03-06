@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public string FileName;
+    public int FileNum;
     public static PlayerStats i;
     public Vector2Int position;
     public Vector2Int destiny;
@@ -36,6 +37,7 @@ public class PlayerStats : MonoBehaviour
     public void Load(SaveFile data)
     {
         FileName = data.FileName;
+        FileNum = data.FileNum;
         position.x = data.position.x; position.y = data.position.y;
         destiny.x = data.destiny.x; destiny.y = data.destiny.y;
 
@@ -46,7 +48,27 @@ public class PlayerStats : MonoBehaviour
         magnetLvl = data.magnetLvl;
         money = data.money;
         levels = new int[25];
-        for (int i = 0; i < 25; i++) { levels[i] = data.levels[i]; }
+        //for (int i = 0; i < 25; i++) { levels[i] = data.levels[i]; }
+    }
+
+    public void Save()
+    {
+        SaveFile data = new SaveFile();
+
+        data.FileName = FileName;
+        data.FileNum = FileNum;
+        data.position.x = position.x; data.position.y = position.y;
+        data.destiny.x = destiny.x; data.destiny.y = destiny.y;
+
+        data.cooldown = cooldown;
+        data.engineLvl = engineLvl;
+        data.laserLvl = laserLvl;
+        data.armorLvl = armorLvl;
+        data.magnetLvl = magnetLvl;
+        data.money =money;
+        levels = new int[25];
+        //for (int i = 0; i < 25; i++) { data.levels[i] = levels[i]; }
+        data.SaveStats();
     }
 
 }

@@ -95,6 +95,7 @@ public class LevelManager : MonoBehaviour
     IEnumerator Back()
     {
         yield return new WaitForSeconds(5f);
+        PlayerStats.i.Save();
         SceneManager.LoadScene("LevelScene");
     }
 

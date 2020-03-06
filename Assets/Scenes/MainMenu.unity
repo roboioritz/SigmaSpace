@@ -345,6 +345,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7668394164856888139}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1289290226 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7293248076741320245, guid: a7db77a21c3ad2846901fb4796211989,
+    type: 3}
+  m_PrefabInstance: {fileID: 7668394164856888139}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1637950989 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7389647688155869103, guid: a7db77a21c3ad2846901fb4796211989,
@@ -417,6 +423,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1965135442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3003272964955835950, guid: a7db77a21c3ad2846901fb4796211989,
+    type: 3}
+  m_PrefabInstance: {fileID: 7668394164856888139}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2131197749 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5874429222330289937, guid: a7db77a21c3ad2846901fb4796211989,
@@ -1127,5 +1139,32 @@ PrefabInstance:
       propertyPath: FileNum
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 2932217074653483978, guid: a7db77a21c3ad2846901fb4796211989,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5418879204982542390, guid: a7db77a21c3ad2846901fb4796211989,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7217657501045736401, guid: a7db77a21c3ad2846901fb4796211989,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8320787613657102703, guid: a7db77a21c3ad2846901fb4796211989,
+        type: 3}
+      propertyPath: InputField
+      value: 
+      objectReference: {fileID: 1965135442}
+    - target: {fileID: 7222490267568790797, guid: a7db77a21c3ad2846901fb4796211989,
+        type: 3}
+      propertyPath: InputField
+      value: 
+      objectReference: {fileID: 1289290226}
+    m_RemovedComponents:
+    - {fileID: 8320787613657102703, guid: a7db77a21c3ad2846901fb4796211989, type: 3}
+    - {fileID: 7222490267568790797, guid: a7db77a21c3ad2846901fb4796211989, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a7db77a21c3ad2846901fb4796211989, type: 3}

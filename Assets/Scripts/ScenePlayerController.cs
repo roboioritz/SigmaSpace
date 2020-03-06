@@ -124,6 +124,8 @@ public class ScenePlayerController : MonoBehaviour
 
     public void Exit()
     {
+        PlayerStats.i.Save();
+        PlayerStats.i.Resetear();
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -138,6 +140,7 @@ public class ScenePlayerController : MonoBehaviour
     {
         shopopen = false;
         Time.timeScale = 1f;
+        PlayerStats.i.Save();
     }
 
     public void ExitClose()

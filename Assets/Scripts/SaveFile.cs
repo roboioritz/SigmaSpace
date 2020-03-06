@@ -17,6 +17,8 @@ public class SaveFile : MonoBehaviour
     public Text NewGameText;
     public GameObject Player;
     public GameObject InputField;
+    public Text positionText;
+    public Text moneyText;
 
     public static PlayerStats i;
     public Vector2Int position;
@@ -44,20 +46,22 @@ public class SaveFile : MonoBehaviour
     }*/
 
     private void OnEnable()
-    {
-        
+    {        
         LoadStats();
         if (!existe) {NameOfFile.SetActive(false); NewGame.SetActive(true); NewGameText.text = "NewGame"; InputField.SetActive(false); }
-        else { NameOfFile.SetActive(true); NewGame.SetActive(false); FileText.text = "" + FileName; }
+        else if (existe){ NameOfFile.SetActive(true); NewGame.SetActive(false); FileText.text = "" + FileName; InputField.SetActive(false); }
     }
 
     void Update()
     {
         FileText.text = "" + FileName;
+        positionText.text = "[" + destiny.x + "][" + destiny.y + "]";
+        moneyText.text = "" + money;
         if(writing && (Input.GetKeyDown(KeyCode.Return) || Input.GetButton("Start1")))
         {
             NewFile();
         }
+        print(FileNum);
     }
 
     public void SaveStats()
@@ -81,11 +85,13 @@ public class SaveFile : MonoBehaviour
             magnetLvl = data.magnetLvl;
             money = data.money;
             levels = new int[25];
-            for (int i = 0; i < 25; i++) { levels[i] = data.levels[i]; }
+            //for (int i = 0; i < 25; i++) { levels[i] = data.levels[i]; }
+            existe = true;
+            //print("datafound");
         }
         else if (data == null)
         {
-             existe = false;
+            existe = false;            
         }        
     }
 
@@ -121,7 +127,7 @@ public class SaveFile : MonoBehaviour
         magnetLvl = 0;
         money = 0;
         levels = new int[25];
-        for (int i = 0; i < 25; i++) { levels[i] = 0; }
+        //for (int i = 0; i < 25; i++) { levels[i] = 0; }
         SaveSystem.SaveStats(this, FileNum);        
         { NameOfFile.SetActive(false); NewGame.SetActive(true); NewGameText.text = "NewGame"; InputField.SetActive(false); }
         existe = true;

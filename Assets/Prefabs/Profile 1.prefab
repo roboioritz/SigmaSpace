@@ -231,6 +231,8 @@ MonoBehaviour:
   NewGameText: {fileID: 1479795149390580512}
   Player: {fileID: 8739137164341402952, guid: 5511bf1fa25aea044b0b8787b1d1b5d4, type: 3}
   InputField: {fileID: 4592671221676875610}
+  positionText: {fileID: 4098280441198539720}
+  moneyText: {fileID: 4807636026204215799}
   position: {x: 0, y: 0}
   destiny: {x: 0, y: 0}
   cooldown: 30
@@ -260,7 +262,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3685846583981368787
 RectTransform:
   m_ObjectHideFlags: 0
@@ -491,7 +493,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -826,7 +828,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2537918260693363949
 RectTransform:
   m_ObjectHideFlags: 0
