@@ -24,8 +24,9 @@ public static class SaveSystem
             BinaryFormatter format = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
             FileData data = format.Deserialize(stream) as FileData;
+            Debug.Log(path);
             stream.Close();
-            return data;
+            return data;            
         }
         else
         {                                  

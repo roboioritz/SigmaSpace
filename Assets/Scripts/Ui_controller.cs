@@ -20,6 +20,8 @@ public class Ui_controller : MonoBehaviour
     public GameObject options;
     public GameObject SceneExit;
     public GameObject SectorExit;
+    public GameObject LoadScreen;
+    public GameObject anyKey;
 
     public GameObject lives;
     public GameObject liveprefab;
@@ -118,6 +120,13 @@ public class Ui_controller : MonoBehaviour
             case "sectorexit":
                 SectorExit.SetActive(true);
                 break;
+            case "loadscreen":
+                LoadScreen.SetActive(true);
+                break;
+            case "any":
+                anyKey.SetActive(true);
+                break;
+
         }
     }
 
@@ -154,6 +163,12 @@ public class Ui_controller : MonoBehaviour
                 break;
             case "sectorexit":
                 SectorExit.SetActive(false);
+                break;
+            case "loadscreen":
+                LoadScreen.SetActive(false);
+                break;
+            case "any":
+                anyKey.SetActive(false);
                 break;
         }
     }

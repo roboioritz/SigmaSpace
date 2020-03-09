@@ -60,8 +60,7 @@ public class SaveFile : MonoBehaviour
         if(writing && (Input.GetKeyDown(KeyCode.Return) || Input.GetButton("Start1")))
         {
             NewFile();
-        }
-        print(FileNum);
+        }       
     }
 
     public void SaveStats()
@@ -100,8 +99,10 @@ public class SaveFile : MonoBehaviour
         if (existe)
         {
             Instantiate(Player);
+            MenuManager.i.Play();
             PlayerStats.i.Load(this);
-            SceneManager.LoadScene("LevelScene");
+            //SceneManager.LoadScene("LevelScene");
+
         }
         else if (!existe)
         {
