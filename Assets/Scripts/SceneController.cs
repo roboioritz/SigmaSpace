@@ -11,7 +11,7 @@ public class SceneController : MonoBehaviour
     public Ui_controller UI;
     //public int[,] stages = new int[5,5];
     public Level[,] stages = new Level[5, 5];
-
+    public LevelArray LevelArray;
     private void Start()
     {
         //Ui_controller.i.Enable("ingame");

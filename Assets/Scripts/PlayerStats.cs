@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public string FileName;
+    public int isnew;
     public int FileNum;
     public static PlayerStats i;
     public Vector2Int position;
@@ -37,6 +38,7 @@ public class PlayerStats : MonoBehaviour
     public void Load(SaveFile data)
     {
         FileName = data.FileName;
+        isnew = data.isnew;
         FileNum = data.FileNum;
         position.x = data.position.x; position.y = data.position.y;
         destiny.x = data.destiny.x; destiny.y = data.destiny.y;
@@ -55,6 +57,7 @@ public class PlayerStats : MonoBehaviour
     {
         SaveFile data = new SaveFile();
 
+        data.isnew = isnew;
         data.FileName = FileName;
         data.FileNum = FileNum;
         data.position.x = position.x; data.position.y = position.y;

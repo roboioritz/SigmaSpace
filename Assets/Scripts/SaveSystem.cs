@@ -8,8 +8,7 @@ public static class SaveSystem
     {
         BinaryFormatter format = new BinaryFormatter();
         string path = Application.persistentDataPath + "/File" + FileNum + ".sigma";        
-        FileStream stream = new FileStream(path, FileMode.OpenOrCreate);
-        
+        FileStream stream = new FileStream(path, FileMode.OpenOrCreate);        
         FileData data = new FileData(PlayerStats);
 
         format.Serialize(stream, data);

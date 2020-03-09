@@ -421,7 +421,7 @@ MonoBehaviour:
   Player2: {fileID: 7684106584575208749, guid: 4a35564126705024f8ae101f89092a37, type: 3}
   UI: {fileID: 373846091}
   start: 0
-  asteroidCount: 1
+  asteroidCount: 2
 --- !u!4 &683375392
 Transform:
   m_ObjectHideFlags: 0

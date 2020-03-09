@@ -162,10 +162,9 @@ public class ScenePlayerController : MonoBehaviour
         Negro_ani.SetTrigger("ZumIn");
         camera.SendMessage("ZumIn");
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene("[" + (departure.x + moveCount.x).ToString() + "][" + (departure.y + moveCount.y).ToString() + "]");
-        //SceneManager.LoadScene("Pruebas sector");
+        //SceneManager.LoadScene("[" + (departure.x + moveCount.x).ToString() + "][" + (departure.y + moveCount.y).ToString() + "]");
+        SceneManager.LoadScene("Pruebas sector");
         PlayerStats.i.destiny = new Vector2Int(departure.x + moveCount.x, departure.y + moveCount.y);
-
     }
 
 }

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class SaveFile : MonoBehaviour
 {
     public int FileNum;
+    public int isnew; //0 new 1 create
     public string FileName;
     public bool existe;
     public bool writing;
@@ -55,7 +56,7 @@ public class SaveFile : MonoBehaviour
     void Update()
     {
         FileText.text = "" + FileName;
-        positionText.text = "[" + destiny.x + "][" + destiny.y + "]";
+        positionText.text = "[" + position.x + "][" + position.y + "]";
         moneyText.text = "" + money;
         if(writing && (Input.GetKeyDown(KeyCode.Return) || Input.GetButton("Start1")))
         {
@@ -85,7 +86,10 @@ public class SaveFile : MonoBehaviour
             money = data.money;
             levels = new int[25];
             //for (int i = 0; i < 25; i++) { levels[i] = data.levels[i]; }
-            existe = true;
+            isnew = data.isnew;
+            if (isnew == 0) existe = false;
+            else if (isnew == 1) existe = true;
+           
             //print("datafound");
         }
         else if (data == null)
@@ -117,7 +121,7 @@ public class SaveFile : MonoBehaviour
     {
         writing = false;
         FileName =  InputField.GetComponent<InputField>().text;
-        
+        isnew = 1;
         position.x = 0; position.y = 0;
         destiny.x = 0; destiny.y = 0;
 
@@ -135,5 +139,24 @@ public class SaveFile : MonoBehaviour
         //LoadStats();
         OnEnable();
         //SceneManager.LoadScene("LevelScene");
+    }
+
+    public void DeleteFile()
+    {
+        FileName = "";
+        isnew = 0;
+        position.x = 0; position.y = 0;
+        destiny.x = 0; destiny.y = 0;
+
+        cooldown = 30;
+        engineLvl = 0;
+        laserLvl = 0;
+        armorLvl = 0;
+        magnetLvl = 0;
+        money = 0;
+        levels = new int[25];
+        //for (int i = 0; i < 25; i++) { levels[i] = 0; }
+        SaveSystem.SaveStats(this, FileNum);
+        { NameOfFile.SetActive(false); NewGame.SetActive(true); NewGameText.text = "NewGame"; InputField.SetActive(false); }
     }
 }

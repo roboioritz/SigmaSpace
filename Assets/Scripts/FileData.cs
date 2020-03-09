@@ -6,6 +6,7 @@ using UnityEngine;
 public class FileData 
 {
     public string FileName;
+    public int isnew;
     //public static PlayerStats i;
     public int[] position;
     public int[] destiny;
@@ -25,6 +26,7 @@ public class FileData
 
     public FileData(SaveFile PlayerStats)
     {
+        isnew = PlayerStats.isnew;
         FileName = PlayerStats.FileName;
         position = new int[2]; position[0] = PlayerStats.position.x; position[1] = PlayerStats.position.y;
         destiny = new int[2]; destiny[0] = PlayerStats.destiny.x; destiny[1] = PlayerStats.destiny.y;
