@@ -28,7 +28,7 @@ public class PlayerStats : MonoBehaviour
     {
         public int[] X;
     }
-    public levels[] Y = new levels[25];
+    public levels[] Y;
 
     //public int[,] levels;
     public bool[] quests;
@@ -37,8 +37,12 @@ public class PlayerStats : MonoBehaviour
     {
         i = this;
         DontDestroyOnLoad(i);
+        Y = new levels[25];
+        for (int i = 0; i < 25; i++)
+        {
+            Y[i].X = new int[25];
+        }
 
-        
 
     }
 
@@ -66,8 +70,7 @@ public class PlayerStats : MonoBehaviour
         {
             for (int x = 0; x < 25; x++)
             {
-                //LevelArray.Y[y].X[x] = data.LevelArray.Y[y].X[x];
-                //money = data.money;
+                Y[y].X[x] = data.Y[y].X[x];                
             }
         }
 
@@ -95,7 +98,7 @@ public class PlayerStats : MonoBehaviour
         {
             for (int x = 0; x < 25; x++)
             {
-                //data.LevelArray.Y[y].X[x] = LevelArray.Y[y].X[x];
+                data.Y[y].X[x] = Y[y].X[x];
             }
         }
 
