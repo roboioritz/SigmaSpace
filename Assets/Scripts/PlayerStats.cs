@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
+
     public string FileName;
     public int isnew;
     public int FileNum;
@@ -21,13 +22,24 @@ public class PlayerStats : MonoBehaviour
 
     public int money;
 
-    public int[] levels;
+    public LevelArrayStats  LevelArray;
+
+    public struct levels
+    {
+        public int[] X;
+    }
+    public levels[] Y = new levels[25];
+
+    //public int[,] levels;
     public bool[] quests;
 
     private void Awake()
     {
         i = this;
         DontDestroyOnLoad(i);
+
+        
+
     }
 
     public void Resetear()
@@ -49,7 +61,16 @@ public class PlayerStats : MonoBehaviour
         armorLvl = data.armorLvl;
         magnetLvl = data.magnetLvl;
         money = data.money;
-        levels = new int[25];
+
+        for (int y = 0; y < 25; y++)
+        {
+            for (int x = 0; x < 25; x++)
+            {
+                //LevelArray.Y[y].X[x] = data.LevelArray.Y[y].X[x];
+                //money = data.money;
+            }
+        }
+
         //for (int i = 0; i < 25; i++) { levels[i] = data.levels[i]; }
     }
 
@@ -69,7 +90,16 @@ public class PlayerStats : MonoBehaviour
         data.armorLvl = armorLvl;
         data.magnetLvl = magnetLvl;
         data.money =money;
-        levels = new int[25];
+
+        for (int y = 0; y < 25; y++)
+        {
+            for (int x = 0; x < 25; x++)
+            {
+                //data.LevelArray.Y[y].X[x] = LevelArray.Y[y].X[x];
+            }
+        }
+
+        //levels = new int[25,25];
         //for (int i = 0; i < 25; i++) { data.levels[i] = levels[i]; }
         data.SaveStats();
     }

@@ -35,6 +35,12 @@ public class SaveFile : MonoBehaviour
 
     public int money;
 
+    public struct Levels
+    {
+        public int[] X;
+    }
+    public Levels[] Y;
+
     public int[] levels;
     public bool[] quests;
 
@@ -47,10 +53,15 @@ public class SaveFile : MonoBehaviour
     }*/
 
     private void OnEnable()
-    {        
+    {                        
+        Y = new Levels[25];
+        for (int i = 0; i < 25; i++)
+        {
+            Y[i].X = new int[25];
+        }
         LoadStats();
-        if (!existe) {NameOfFile.SetActive(false); NewGame.SetActive(true); NewGameText.text = "NewGame"; InputField.SetActive(false); }
-        else if (existe){ NameOfFile.SetActive(true); NewGame.SetActive(false); FileText.text = "" + FileName; InputField.SetActive(false); }
+        if (!existe) { NameOfFile.SetActive(false); NewGame.SetActive(true); NewGameText.text = "NewGame"; InputField.SetActive(false); }
+        else if (existe) { NameOfFile.SetActive(true); NewGame.SetActive(false); FileText.text = "" + FileName; InputField.SetActive(false); }
     }
 
     void Update()
@@ -85,16 +96,25 @@ public class SaveFile : MonoBehaviour
             magnetLvl = data.magnetLvl;
             money = data.money;
             levels = new int[25];
+            for (int y = 0; y < 25; y++)
+            {
+                for (int x = 0; x < 25; x++)
+                {
+                    Y[y].X[x] = data.levels[y,x];                                    
+                }
+            }
             //for (int i = 0; i < 25; i++) { levels[i] = data.levels[i]; }
+            
             isnew = data.isnew;
             if (isnew == 0) existe = false;
             else if (isnew == 1) existe = true;
-           
+            
             //print("datafound");
         }
         else if (data == null)
         {
-            existe = false;            
+            existe = false;
+            print(isnew);
         }        
     }
 
@@ -132,6 +152,15 @@ public class SaveFile : MonoBehaviour
         magnetLvl = 0;
         money = 0;
         levels = new int[25];
+
+        for (int y = 0; y < 25; y++)
+        {
+            for (int x = 0; x < 25; x++)
+            {
+                Y[y].X[x] = 0;                
+            }
+        }
+
         //for (int i = 0; i < 25; i++) { levels[i] = 0; }
         SaveSystem.SaveStats(this, FileNum);        
         { NameOfFile.SetActive(false); NewGame.SetActive(true); NewGameText.text = "NewGame"; InputField.SetActive(false); }

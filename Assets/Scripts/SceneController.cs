@@ -13,8 +13,8 @@ public class SceneController : MonoBehaviour
     public Level[,] stages = new Level[5, 5];
     public LevelArray LevelArray;
     private void Start()
-    {
-        //Ui_controller.i.Enable("ingame");
+    {   
+        
         UI.Enable("ingame");
 
         int count = 0;
@@ -23,7 +23,7 @@ public class SceneController : MonoBehaviour
             for (int j = 0; j < 5; j++)
             {
                 stages[i, j] = Levels[count];
-                stages[i, j].state = PlayerStats.i.levels[count];
+                //stages[i, j].state = PlayerStats.i.levels[count];
                 count++;
             }
         }
@@ -68,6 +68,11 @@ public class SceneController : MonoBehaviour
         {
             Quests[i].isActive = PlayerStats.i.quests[i];
         } */
+    }
+
+    private void Update()
+    {
+        print(LevelArray.Y[0].X[24].coordinates.x);
     }
 
     public void Buy(string product)

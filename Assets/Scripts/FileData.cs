@@ -21,7 +21,7 @@ public class FileData
 
     public int money;
 
-    public int[] levels;
+    public int[,] levels;
     public bool[] quests;
 
     public FileData(SaveFile PlayerStats)
@@ -39,7 +39,14 @@ public class FileData
 
         money = PlayerStats.money;
 
-        levels = new int[25];
-        //for(int i = 0; i < 25; i++) { levels[i] = PlayerStats.levels[i]; }
+        levels = new int[25,25];
+        for(int y = 0; y < 25; y++)
+        {
+            for (int x = 0; x < 25; x++)
+            {
+                //levels[y, x] = PlayerStats.LevelArray.Y[y].X[x];
+                money = PlayerStats.money;
+            }
+        }
     }
 }

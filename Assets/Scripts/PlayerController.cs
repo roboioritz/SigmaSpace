@@ -159,7 +159,7 @@ public class PlayerController : MonoBehaviour
 
     public void Dead()
     {
-        PlayerStats.i.levels[(PlayerStats.i.destiny.x + 2) + 5 * (-PlayerStats.i.destiny.y+2)] = 1;
+        //PlayerStats.i.levels[(PlayerStats.i.destiny.x + 2) + 5 * (-PlayerStats.i.destiny.y+2)] = 1;
         LevelManager.i.SendMessage("End");
         Destroy(gameObject);
     }

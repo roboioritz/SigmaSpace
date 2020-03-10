@@ -43,7 +43,7 @@ public class LevelManager : MonoBehaviour
             if (asteroidCount <= 0)
             {
                 //playsound victori
-                PlayerStats.i.levels[(PlayerStats.i.destiny.x + 2) + 5 * (-PlayerStats.i.destiny.y + 2)] = 2;
+                //PlayerStats.i.levels[(PlayerStats.i.destiny.x + 2) + 5 * (-PlayerStats.i.destiny.y + 2)] = 2;
                 PlayerStats.i.position = PlayerStats.i.destiny;
                 StartCoroutine(Back());
             }

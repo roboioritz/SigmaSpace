@@ -1,15 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 [System.Serializable]
-public class LevelArray
+public class LevelArrayStats 
 {
     [System.Serializable]
-
     public struct levels
-    {        
-        public Level[] X;
+    {
+        public int[] X;
     }
     public levels[] Y = new levels[25];
-    
 }
