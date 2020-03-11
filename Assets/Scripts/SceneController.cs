@@ -16,8 +16,10 @@ public class SceneController : MonoBehaviour
     {   
         
         UI.Enable("ingame");
+        LoadLevelStates();
+        CalculateEngineRange();
 
-        int count = 0;
+        /*int count = 0;
         for (int i = 0; i < 5; i++)
         {
             for (int j = 0; j < 5; j++)
@@ -26,52 +28,8 @@ public class SceneController : MonoBehaviour
                 //stages[i, j].state = PlayerStats.i.levels[count];
                 count++;
             }
-        }
+        }*/
 
-        for (int y = 0; y < 25; y++)
-        {
-            for (int x = 0; x < 25; x++)
-            {
-                //LevelArray.Y[y].X[x].state = PlayerStats.i.Y[y].X[x];
-                LevelArray.Y[y].X[x].state = PlayerStats.i.LevelArray.Y[y].X[x];
-            }
-        }
-
-        /*for (int i = 0; i < PlayerStats.i.engineLvl+1; i++)
-        {
-            for (int j = 0; j < PlayerStats.i.engineLvl-i+1; j++)
-            {
-
-                stages[PlayerStats.i.position.x + 2 + i, -PlayerStats.i.position.y + 2 + j].reacheable = true;
-                stages[PlayerStats.i.position.x + 2 - i, -PlayerStats.i.position.y + 2 + j].reacheable = true;
-                stages[PlayerStats.i.position.x + 2 + i, -PlayerStats.i.position.y + 2 - j].reacheable = true;
-                stages[PlayerStats.i.position.x + 2 - i, -PlayerStats.i.position.y + 2 - j].reacheable = true;
-            }
-        }*/                
-
-        /*for (int i = 0; i < PlayerStats.i.engineLvl + 1; i++)
-        {
-            if (-PlayerStats.i.position.y + 2 + i <= 4 && -PlayerStats.i.position.y + 2 + i >= 0)
-                stages[-PlayerStats.i.position.y + 2 + i, PlayerStats.i.position.x + 2].reacheable = true;
-            if (-PlayerStats.i.position.y + 2 - i <= 4 && -PlayerStats.i.position.y + 2 - i >= 0 )
-                stages[-PlayerStats.i.position.y + 2 - i, PlayerStats.i.position.x + 2].reacheable = true;
-            if (PlayerStats.i.position.x + 2 + i <= 4 && PlayerStats.i.position.x + 2 + i >= 0)
-                stages[-PlayerStats.i.position.y + 2, PlayerStats.i.position.x + 2 + i].reacheable = true;
-            if (PlayerStats.i.position.x + 2 - i <= 4 && PlayerStats.i.position.x + 2 - i >= 0 )
-                stages[-PlayerStats.i.position.y + 2, PlayerStats.i.position.x + 2 - i].reacheable = true;
-
-            if (i >= 2)
-            {
-                if (-PlayerStats.i.position.y + 1 + i <= 4 && -PlayerStats.i.position.y + 1 + i >= 0 && PlayerStats.i.position.x + 3 <= 4 && PlayerStats.i.position.x + 3 >= 0)
-                    stages[-PlayerStats.i.position.y + 1 + i, PlayerStats.i.position.x + 3].reacheable = true;
-                if (-PlayerStats.i.position.y + 3 - i <= 4 && -PlayerStats.i.position.y + 3 - i >= 0 && PlayerStats.i.position.x + 1 <= 4 && PlayerStats.i.position.x + 1 >= 0)
-                    stages[-PlayerStats.i.position.y + 3 - i, PlayerStats.i.position.x + 1].reacheable = true;
-                if (-PlayerStats.i.position.y + 1 <= 4 && -PlayerStats.i.position.y + 1 >= 0 && PlayerStats.i.position.x + 1 + i <= 4 && PlayerStats.i.position.x + 1 + i >= 0)
-                    stages[-PlayerStats.i.position.y + 1, PlayerStats.i.position.x + 1 + i].reacheable = true;
-                if (-PlayerStats.i.position.y + 3 <= 4 && -PlayerStats.i.position.y + 3 >= 0 && PlayerStats.i.position.x + 3 - i <= 4 && PlayerStats.i.position.x + 3 - i >= 0)
-                    stages[-PlayerStats.i.position.y + 3, PlayerStats.i.position.x + 3 - i].reacheable = true;
-            }
-        }
 
         /*for (int i = 0; i < Quests.Count; i++)
         {
@@ -115,5 +73,70 @@ public class SceneController : MonoBehaviour
         }
     }
 
-    
+
+    void LoadLevelStates()
+    {
+        for (int y = 0; y < 25; y++)
+        {
+            for (int x = 0; x < 25; x++)
+            {
+                //LevelArray.Y[y].X[x].state = PlayerStats.i.Y[y].X[x];
+                LevelArray.Y[y].X[x].state = PlayerStats.i.LevelArray.Y[y].X[x];
+            }
+        }
+    }
+
+    void CalculateEngineRange()
+    {
+
+        for (int y = 0; y < PlayerStats.i.engineLvl + 1; y++)
+        {
+            for (int x = 0; x < PlayerStats.i.engineLvl + 1 - y; x++) 
+            {
+                //if (PlayerStats.i.position.y + 12 + y < 25 && PlayerStats.i.position.x + 12 + x < 25) LevelArray.Y[-PlayerStats.i.position.y + 12 + y].X[PlayerStats.i.position.x + 12 + x].reacheable = true;
+                if (-PlayerStats.i.position.y + 12 + y <  25 && PlayerStats.i.position.x + 12 + x <  25) LevelArray.Y[-PlayerStats.i.position.y + 12 + y].X[PlayerStats.i.position.x + 12 + x].reacheable = true;
+                if (-PlayerStats.i.position.y + 12 + y > -25 && PlayerStats.i.position.x + 12 + x <  25) LevelArray.Y[-PlayerStats.i.position.y + 12 - y].X[PlayerStats.i.position.x + 12 + x].reacheable = true;
+                if (-PlayerStats.i.position.y + 12 + y <  25 && PlayerStats.i.position.x + 12 + x > -25) LevelArray.Y[-PlayerStats.i.position.y + 12 + y].X[PlayerStats.i.position.x + 12 - x].reacheable = true;
+                if (-PlayerStats.i.position.y + 12 + y > -25 && PlayerStats.i.position.x + 12 + x > -25) LevelArray.Y[-PlayerStats.i.position.y + 12 - y].X[PlayerStats.i.position.x + 12 - x].reacheable = true;
+            }
+        }
+
+
+        /*for (int i = 0; i < PlayerStats.i.engineLvl+1; i++)
+      {
+          for (int j = 0; j < PlayerStats.i.engineLvl-i+1; j++)
+          {
+
+              stages[PlayerStats.i.position.x + 2 + i, -PlayerStats.i.position.y + 2 + j].reacheable = true;
+              stages[PlayerStats.i.position.x + 2 - i, -PlayerStats.i.position.y + 2 + j].reacheable = true;
+              stages[PlayerStats.i.position.x + 2 + i, -PlayerStats.i.position.y + 2 - j].reacheable = true;
+              stages[PlayerStats.i.position.x + 2 - i, -PlayerStats.i.position.y + 2 - j].reacheable = true;
+          }
+      }*/
+
+        /*for (int i = 0; i < PlayerStats.i.engineLvl + 1; i++)
+        {
+            if (-PlayerStats.i.position.y + 2 + i <= 4 && -PlayerStats.i.position.y + 2 + i >= 0)
+                stages[-PlayerStats.i.position.y + 2 + i, PlayerStats.i.position.x + 2].reacheable = true;
+            if (-PlayerStats.i.position.y + 2 - i <= 4 && -PlayerStats.i.position.y + 2 - i >= 0 )
+                stages[-PlayerStats.i.position.y + 2 - i, PlayerStats.i.position.x + 2].reacheable = true;
+            if (PlayerStats.i.position.x + 2 + i <= 4 && PlayerStats.i.position.x + 2 + i >= 0)
+                stages[-PlayerStats.i.position.y + 2, PlayerStats.i.position.x + 2 + i].reacheable = true;
+            if (PlayerStats.i.position.x + 2 - i <= 4 && PlayerStats.i.position.x + 2 - i >= 0 )
+                stages[-PlayerStats.i.position.y + 2, PlayerStats.i.position.x + 2 - i].reacheable = true;
+
+            if (i >= 2)
+            {
+                if (-PlayerStats.i.position.y + 1 + i <= 4 && -PlayerStats.i.position.y + 1 + i >= 0 && PlayerStats.i.position.x + 3 <= 4 && PlayerStats.i.position.x + 3 >= 0)
+                    stages[-PlayerStats.i.position.y + 1 + i, PlayerStats.i.position.x + 3].reacheable = true;
+                if (-PlayerStats.i.position.y + 3 - i <= 4 && -PlayerStats.i.position.y + 3 - i >= 0 && PlayerStats.i.position.x + 1 <= 4 && PlayerStats.i.position.x + 1 >= 0)
+                    stages[-PlayerStats.i.position.y + 3 - i, PlayerStats.i.position.x + 1].reacheable = true;
+                if (-PlayerStats.i.position.y + 1 <= 4 && -PlayerStats.i.position.y + 1 >= 0 && PlayerStats.i.position.x + 1 + i <= 4 && PlayerStats.i.position.x + 1 + i >= 0)
+                    stages[-PlayerStats.i.position.y + 1, PlayerStats.i.position.x + 1 + i].reacheable = true;
+                if (-PlayerStats.i.position.y + 3 <= 4 && -PlayerStats.i.position.y + 3 >= 0 && PlayerStats.i.position.x + 3 - i <= 4 && PlayerStats.i.position.x + 3 - i >= 0)
+                    stages[-PlayerStats.i.position.y + 3, PlayerStats.i.position.x + 3 - i].reacheable = true;*/
+    }
 }
+
+
+

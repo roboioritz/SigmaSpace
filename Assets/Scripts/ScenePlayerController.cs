@@ -85,8 +85,8 @@ public class ScenePlayerController : MonoBehaviour
         //&& Mathf.Abs(departure.x) + Mathf.Abs(moveCount.x) + 1 * Mathf.Sign(Input.GetAxis("Horizontal")) * Mathf.Sign(moveCount.x) < 3)
         //departure.y + moveCount.y + 1 * Mathf.Sign(-Input.GetAxis("Vertical1"))
         if (!moving && Input.GetAxis("Vertical1") != 0 && + Mathf.Abs(moveCount.y + 1 * Mathf.Sign(-Input.GetAxis("Vertical1"))) + Mathf.Abs(moveCount.x) < engine+1
-                                                        && departure.y + moveCount.y + 1 * Mathf.Sign(-Input.GetAxis("Vertical1")) < 100
-                                                        && departure.y + moveCount.y + 1 * Mathf.Sign(-Input.GetAxis("Vertical1")) > -100)//Este 3 en el futuro sera el limite del mapa +1
+                                                        && departure.y + moveCount.y + 1 * Mathf.Sign(-Input.GetAxis("Vertical1")) < 13
+                                                        && departure.y + moveCount.y + 1 * Mathf.Sign(-Input.GetAxis("Vertical1")) > -13)//el limite del mapa +1
         {
             moving = true;
             StartCoroutine(Moving());
@@ -94,8 +94,8 @@ public class ScenePlayerController : MonoBehaviour
             transform.rotation = Quaternion.Euler(0,-90 * Mathf.Sign(-Input.GetAxis("Vertical1")),0);
         }
         if (!moving && Input.GetAxis("Horizontal1") != 0 && +Mathf.Abs(moveCount.y ) + Mathf.Abs(moveCount.x + 1 * Mathf.Sign(Input.GetAxis("Horizontal1"))) < engine + 1
-                                                      && departure.x + moveCount.x + 1 * Mathf.Sign(Input.GetAxis("Horizontal1")) < 300
-                                                        && departure.x + moveCount.x + 1 * Mathf.Sign(Input.GetAxis("Horizontal1")) > -300)
+                                                      && departure.x + moveCount.x + 1 * Mathf.Sign(Input.GetAxis("Horizontal1")) < 13
+                                                        && departure.x + moveCount.x + 1 * Mathf.Sign(Input.GetAxis("Horizontal1")) > -13)
         {
             moving = true;
             StartCoroutine(Moving());
