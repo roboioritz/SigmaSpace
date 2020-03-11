@@ -28,6 +28,15 @@ public class SceneController : MonoBehaviour
             }
         }
 
+        for (int y = 0; y < 25; y++)
+        {
+            for (int x = 0; x < 25; x++)
+            {
+                //LevelArray.Y[y].X[x].state = PlayerStats.i.Y[y].X[x];
+                LevelArray.Y[y].X[x].state = PlayerStats.i.LevelArray.Y[y].X[x];
+            }
+        }
+
         /*for (int i = 0; i < PlayerStats.i.engineLvl+1; i++)
         {
             for (int j = 0; j < PlayerStats.i.engineLvl-i+1; j++)
@@ -40,7 +49,7 @@ public class SceneController : MonoBehaviour
             }
         }*/                
 
-        for (int i = 0; i < PlayerStats.i.engineLvl + 1; i++)
+        /*for (int i = 0; i < PlayerStats.i.engineLvl + 1; i++)
         {
             if (-PlayerStats.i.position.y + 2 + i <= 4 && -PlayerStats.i.position.y + 2 + i >= 0)
                 stages[-PlayerStats.i.position.y + 2 + i, PlayerStats.i.position.x + 2].reacheable = true;
@@ -72,7 +81,7 @@ public class SceneController : MonoBehaviour
 
     private void Update()
     {
-        print(LevelArray.Y[0].X[24].coordinates.x);
+        //print(LevelArray.Y[0].X[24].coordinates.x);
     }
 
     public void Buy(string product)

@@ -12,11 +12,11 @@ public class LayoutInspectorStats : PropertyDrawer
         EditorGUI.PrefixLabel(position, label);
         Rect newPosition = position;
         newPosition.y += 18f;
-        SerializedProperty data = property.FindPropertyRelative("levellist");
+        SerializedProperty data = property.FindPropertyRelative("Y");
 
         for (int j = 0; j < 25; j++)
         {
-            SerializedProperty row = data.GetArrayElementAtIndex(j).FindPropertyRelative("level");
+            SerializedProperty row = data.GetArrayElementAtIndex(j).FindPropertyRelative("X");
             if (row.arraySize != 25) row.arraySize = 25;
             newPosition.width = position.width / 25;
             newPosition.height = 25f;
