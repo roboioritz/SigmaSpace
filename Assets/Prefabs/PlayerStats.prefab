@@ -46,7 +46,7 @@ MonoBehaviour:
   FileName: 
   isnew: 0
   FileNum: 0
-  position: {x: 0, y: 0}
+  position: {x: 9, y: -9}
   destiny: {x: 0, y: 0}
   cooldown: 30
   lasers:
@@ -54,7 +54,7 @@ MonoBehaviour:
   - {fileID: 3581269832045875271, guid: e363a9ef4ed136840b9594744fae3ce5, type: 3}
   - {fileID: 3581269832045875271, guid: 3f1ca0e2c86586048a527da50bbd3242, type: 3}
   - {fileID: 3581269832045875271, guid: 19e6e66cb25f7544889dc0ebe81d13ea, type: 3}
-  engineLvl: 2
+  engineLvl: 7
   laserLvl: 0
   armorLvl: 1
   magnetLvl: 0
