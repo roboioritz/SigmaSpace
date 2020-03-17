@@ -11,9 +11,11 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {   i=this;
-        Screen.SetResolution(1920,910,false); //1024/485 funciona proporcion 0.4736  1920/910 
-        //PlayerStats.i.Resetear();
-        Ui_controller.i.Enable("mainmenu");
+        Screen.SetResolution(1680 , 796, false); //1024/485 funciona proporcion 0.4736  1920/910  1280/607  1680/796
+        //PlayerStats.i.Resetear();        
+        print("resoluciones" + Screen.width + "/" + Screen.height);
+        //Ui_controller.i.Enable("mainmenu");
+       
     }
     
     void Update()
