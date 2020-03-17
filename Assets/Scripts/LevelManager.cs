@@ -42,10 +42,13 @@ public class LevelManager : MonoBehaviour
             }
             if (asteroidCount <= 0)
             {
+                print("hola");
                 //playsound victori
                 //PlayerStats.i.levels[(PlayerStats.i.destiny.x + 2) + 5 * (-PlayerStats.i.destiny.y + 2)] = 2;
-                PlayerStats.i.position = PlayerStats.i.destiny;
+                //PlayerStats.i.position = PlayerStats.i.destiny;
+                PlayerStats.i.LevelPass();
                 StartCoroutine(Back());
+                
             }
 
             /*if (Input.GetButtonDown("Start1"))

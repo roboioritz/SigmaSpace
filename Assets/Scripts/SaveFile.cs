@@ -125,8 +125,7 @@ public class SaveFile : MonoBehaviour
             Instantiate(Player);
             MenuManager.i.Play();
             PlayerStats.i.Load(this);
-            //SceneManager.LoadScene("LevelScene");
-
+            SceneManager.LoadScene("LevelScene");
         }
         else if (!existe)
         {
@@ -146,7 +145,7 @@ public class SaveFile : MonoBehaviour
         destiny.x = 0; destiny.y = 0;
 
         cooldown = 30;
-        engineLvl = 0;
+        engineLvl = 12;
         laserLvl = 0;
         armorLvl = 0;
         magnetLvl = 0;

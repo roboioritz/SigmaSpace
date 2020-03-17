@@ -92,13 +92,13 @@ public class PlayerStats : MonoBehaviour
         data.laserLvl = laserLvl;
         data.armorLvl = armorLvl;
         data.magnetLvl = magnetLvl;
-        data.money =money;
+        data.money =money;        
 
         for (int y = 0; y < 25; y++)
         {
             for (int x = 0; x < 25; x++)
             {
-                data.Y[y].X[x] = Y[y].X[x];
+                //data.Y[y].X[x] = Y[y].X[x];
             }
         }
 
@@ -106,5 +106,11 @@ public class PlayerStats : MonoBehaviour
         //for (int i = 0; i < 25; i++) { data.levels[i] = levels[i]; }
         data.SaveStats();
     }
+
+    public void LevelPass()
+    {
+        position = destiny;
+    }
+   
 
 }

@@ -218,10 +218,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4512858722405565118}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a16a875f9f3feb24ab6127ef9260bb46, type: 3}
+  m_Script: {fileID: 11500000, guid: ce44e427b07133b49b1cbe16949a8a99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FileNum: 1
+  FileNum: 0
+  isnew: 0
   FileName: 
   existe: 0
   writing: 0
@@ -235,14 +236,14 @@ MonoBehaviour:
   moneyText: {fileID: 4807636026204215799}
   position: {x: 0, y: 0}
   destiny: {x: 0, y: 0}
-  cooldown: 30
+  cooldown: 0
   lasers: []
   engineLvl: 0
   laserLvl: 0
   armorLvl: 0
   magnetLvl: 0
   money: 0
-  levels: 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  levels: 
   quests: 
 --- !u!1 &4592671221676875610
 GameObject:
