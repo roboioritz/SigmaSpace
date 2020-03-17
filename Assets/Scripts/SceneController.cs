@@ -93,11 +93,10 @@ public class SceneController : MonoBehaviour
         {
             for (int x = 0; x < PlayerStats.i.engineLvl + 1 - y; x++) 
             {
-                //if (PlayerStats.i.position.y + 12 + y < 25 && PlayerStats.i.position.x + 12 + x < 25) LevelArray.Y[-PlayerStats.i.position.y + 12 + y].X[PlayerStats.i.position.x + 12 + x].reacheable = true;
-                if (-PlayerStats.i.position.y + 12 + y <  25 && PlayerStats.i.position.x + 12 + x <  25) LevelArray.Y[-PlayerStats.i.position.y + 12 + y].X[PlayerStats.i.position.x + 12 + x].reacheable = true;
-                if (-PlayerStats.i.position.y + 12 + y > -25 && PlayerStats.i.position.x + 12 + x <  25) LevelArray.Y[-PlayerStats.i.position.y + 12 - y].X[PlayerStats.i.position.x + 12 + x].reacheable = true;
-                if (-PlayerStats.i.position.y + 12 + y <  25 && PlayerStats.i.position.x + 12 + x > -25) LevelArray.Y[-PlayerStats.i.position.y + 12 + y].X[PlayerStats.i.position.x + 12 - x].reacheable = true;
-                if (-PlayerStats.i.position.y + 12 + y > -25 && PlayerStats.i.position.x + 12 + x > -25) LevelArray.Y[-PlayerStats.i.position.y + 12 - y].X[PlayerStats.i.position.x + 12 - x].reacheable = true;
+               if (-PlayerStats.i.position.y + 12 + y <  25 && PlayerStats.i.position.x + 12 + x <  25) LevelArray.Y[-PlayerStats.i.position.y + 12 + y].X[PlayerStats.i.position.x + 12 + x].reacheable = true;               
+               if (-PlayerStats.i.position.y + 12 - y > -1 && PlayerStats.i.position.x + 12 + x <  25) LevelArray.Y[-PlayerStats.i.position.y + 12 - y].X[PlayerStats.i.position.x + 12 + x].reacheable = true;
+               if (-PlayerStats.i.position.y + 12 + y <  25 && PlayerStats.i.position.x + 12 - x > - 1) LevelArray.Y[-PlayerStats.i.position.y + 12 + y].X[PlayerStats.i.position.x + 12 - x].reacheable = true;
+               if (-PlayerStats.i.position.y + 12 - y > -1 && PlayerStats.i.position.x + 12 - x > - 1) LevelArray.Y[-PlayerStats.i.position.y + 12 - y].X[PlayerStats.i.position.x + 12 - x].reacheable = true;
             }
         }
 
