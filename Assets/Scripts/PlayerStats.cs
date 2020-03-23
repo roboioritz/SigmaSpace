@@ -30,6 +30,9 @@ public class PlayerStats : MonoBehaviour
     }
     public levels[] Y;
 
+    public int[] Objts;
+    public bool[] Asteroidex;
+
     //public int[,] levels;
     public bool[] quests;
 
@@ -37,13 +40,6 @@ public class PlayerStats : MonoBehaviour
     {
         i = this;
         DontDestroyOnLoad(i);
-        /*Y = new levels[25];
-        for (int i = 0; i < 25; i++)
-        {
-            Y[i].X = new int[25];
-        }*/
-
-
     }
 
     public void Resetear()
@@ -72,9 +68,12 @@ public class PlayerStats : MonoBehaviour
             {
                 LevelArray.Y[y].X[x] = data.Y[y].X[x];                
             }
-        }
 
-        //for (int i = 0; i < 25; i++) { levels[i] = data.levels[i]; }
+            if (y < 20) Objts[y] = data.Objts[y];
+            if (y < 15) Asteroidex[y] = data.Asteroidex[y];
+        }
+        
+
     }
 
     public void Save()
@@ -92,18 +91,27 @@ public class PlayerStats : MonoBehaviour
         data.laserLvl = laserLvl;
         data.armorLvl = armorLvl;
         data.magnetLvl = magnetLvl;
-        data.money =money;        
-
+        data.money =money;
+        data.Y = data.Array();
+        for(int i = 0; i < 25; i++)
+        {
+            //data.Y[y] = data.Array();
+        }
+            data.Objts = new int[20];
+        data.Asteroidex = new bool[15];
         for (int y = 0; y < 25; y++)
         {
+            
+            data.Y[y].X = new int[25];
             for (int x = 0; x < 25; x++)
             {
                 //data.Y[y].X[x] = Y[y].X[x];
             }
-        }
 
-        //levels = new int[25,25];
-        //for (int i = 0; i < 25; i++) { data.levels[i] = levels[i]; }
+            if (y < 20) data.Objts[y] = Objts[y];
+            if (y < 15) data.Asteroidex[y] = Asteroidex[y];
+
+        }        
         data.SaveStats();
     }
 

@@ -21,6 +21,9 @@ public class FileData
 
     public int money;
 
+    public int[] Objts;
+    public bool[] Asteroidex;
+
     public int[,] levels;
     public bool[] quests;
 
@@ -40,13 +43,17 @@ public class FileData
         money = PlayerStats.money;
 
         levels = new int[25,25];
+        Objts = new int[20];
+        Asteroidex = new bool[15];
         for(int y = 0; y < 25; y++)
         {
             for (int x = 0; x < 25; x++)
-            {
-                //levels[y, x] = PlayerStats.LevelArray.Y[y].X[x];
+            {                
                 money = PlayerStats.money;
             }
+
+            if (y < 20) Objts[y] = PlayerStats.Objts[y];
+            if (y < 15) Asteroidex[y] = PlayerStats.Asteroidex[y];
         }
     }
 }

@@ -41,6 +41,9 @@ public class SaveFile : MonoBehaviour
     }
     public Levels[] Y;
 
+    public int[] Objts;
+    public bool[] Asteroidex;
+
     public int[] levels;
     public bool[] quests;
 
@@ -55,6 +58,8 @@ public class SaveFile : MonoBehaviour
     private void OnEnable()
     {                        
         Y = new Levels[25];
+        Objts = new int[20];
+        Asteroidex = new bool[15];
         for (int i = 0; i < 25; i++)
         {
             Y[i].X = new int[25];
@@ -72,7 +77,7 @@ public class SaveFile : MonoBehaviour
         if(writing && (Input.GetKeyDown(KeyCode.Return) || Input.GetButton("Start1")))
         {
             NewFile();
-        }       
+        } 
     }
 
     public void SaveStats()
@@ -96,20 +101,22 @@ public class SaveFile : MonoBehaviour
             magnetLvl = data.magnetLvl;
             money = data.money;
             levels = new int[25];
+            Objts = new int[20];
+            Asteroidex = new bool[15];
             for (int y = 0; y < 25; y++)
             {
                 for (int x = 0; x < 25; x++)
                 {
                     Y[y].X[x] = data.levels[y,x];                                    
                 }
-            }
-            //for (int i = 0; i < 25; i++) { levels[i] = data.levels[i]; }
+
+                if (y < 20) Objts[y] = data.Objts[y];
+                if (y < 15) Asteroidex[y] = data.Asteroidex[y];
+            }            
             
             isnew = data.isnew;
             if (isnew == 0) existe = false;
-            else if (isnew == 1) existe = true;
-            
-            //print("datafound");
+            else if (isnew == 1) existe = true;                      
         }
         else if (data == null)
         {
@@ -158,6 +165,10 @@ public class SaveFile : MonoBehaviour
             {
                 Y[y].X[x] = 0;                
             }
+
+            if (y < 20) Objts[y] = 0;
+            if (y < 15) Asteroidex[y] = false;
+
         }
 
         //for (int i = 0; i < 25; i++) { levels[i] = 0; }
@@ -187,4 +198,16 @@ public class SaveFile : MonoBehaviour
         SaveSystem.SaveStats(this, FileNum);
         { NameOfFile.SetActive(false); NewGame.SetActive(true); NewGameText.text = "NewGame"; InputField.SetActive(false); }
     }
+
+    public Levels[] Array()
+    {
+        Levels[] w;
+        w = new Levels[25];
+        for (int i = 0; i < 25; i++)
+        {
+            w[i].X = new int[25];
+        }
+        return w;
+    }
+
 }
