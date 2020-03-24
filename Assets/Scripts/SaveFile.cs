@@ -58,7 +58,7 @@ public class SaveFile : MonoBehaviour
     private void OnEnable()
     {                        
         Y = new Levels[25];
-        Objts = new int[20];
+        Objts = new int[21];
         Asteroidex = new bool[15];
         for (int i = 0; i < 25; i++)
         {
@@ -101,7 +101,7 @@ public class SaveFile : MonoBehaviour
             magnetLvl = data.magnetLvl;
             money = data.money;
             levels = new int[25];
-            Objts = new int[20];
+            Objts = new int[21];
             Asteroidex = new bool[15];
             for (int y = 0; y < 25; y++)
             {
@@ -110,7 +110,7 @@ public class SaveFile : MonoBehaviour
                     Y[y].X[x] = data.levels[y,x];                                    
                 }
 
-                if (y < 20) Objts[y] = data.Objts[y];
+                if (y < 21) Objts[y] = data.Objts[y];
                 if (y < 15) Asteroidex[y] = data.Asteroidex[y];
             }            
             
@@ -152,11 +152,11 @@ public class SaveFile : MonoBehaviour
         destiny.x = 0; destiny.y = 0;
 
         cooldown = 30;
-        engineLvl = 12;
+        engineLvl = 0;
         laserLvl = 0;
         armorLvl = 0;
         magnetLvl = 0;
-        money = 0;
+        money = 2000;
         levels = new int[25];
 
         for (int y = 0; y < 25; y++)
@@ -166,8 +166,8 @@ public class SaveFile : MonoBehaviour
                 Y[y].X[x] = 0;                
             }
 
-            if (y < 20) Objts[y] = 0;
-            if (y < 15) Asteroidex[y] = false;
+            if (y < 21) Objts[y] = 1; // poner a 0
+            if (y < 15) Asteroidex[y] = true; //poner a false
 
         }
 

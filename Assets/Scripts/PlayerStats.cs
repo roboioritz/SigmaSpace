@@ -69,7 +69,7 @@ public class PlayerStats : MonoBehaviour
                 LevelArray.Y[y].X[x] = data.Y[y].X[x];                
             }
 
-            if (y < 20) Objts[y] = data.Objts[y];
+            if (y < 21) Objts[y] = data.Objts[y];
             if (y < 15) Asteroidex[y] = data.Asteroidex[y];
         }
         
@@ -97,7 +97,7 @@ public class PlayerStats : MonoBehaviour
         {
             //data.Y[y] = data.Array();
         }
-            data.Objts = new int[20];
+            data.Objts = new int[21];
         data.Asteroidex = new bool[15];
         for (int y = 0; y < 25; y++)
         {
@@ -108,7 +108,7 @@ public class PlayerStats : MonoBehaviour
                 //data.Y[y].X[x] = Y[y].X[x];
             }
 
-            if (y < 20) data.Objts[y] = Objts[y];
+            if (y < 21) data.Objts[y] = Objts[y];
             if (y < 15) data.Asteroidex[y] = Asteroidex[y];
 
         }        

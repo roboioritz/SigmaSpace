@@ -27,7 +27,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private float rotSpeed;
     private bool isfuel = false;
-    private bool inmune = false;    
+    private bool inmune = false;
+    private bool laserOk = true;
+    private bool shieldOk = true;
     private float fuel;
     private float countdown = 0;
     private string axis1;
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour
         StartCoroutine(Inmunity());
         armor = PlayerStats.i.armorLvl;
         cooldown = PlayerStats.i.cooldown;
+        if (PlayerStats.i.Objts[6] == 1) cooldown /= 1.5f;
         Laser = PlayerStats.i.lasers[PlayerStats.i.laserLvl];
         rb = GetComponent<Rigidbody>();
         ani = GetComponent<Animator>();
@@ -61,8 +64,9 @@ public class PlayerController : MonoBehaviour
         //position = transform.position;
         Fuel();
         Rotatate();
-        Fire();        
-        if(countdown>0)countdown --;
+        Fire();
+        Hability();
+        if (countdown>0)countdown --;
 
         if (Mathf.Sign(inertia.x) != Mathf.Sign(Mathf.Sin(Mathf.Deg2Rad * ship.transform.eulerAngles.y)))
         {
@@ -122,8 +126,8 @@ public class PlayerController : MonoBehaviour
                                -Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * ship.transform.eulerAngles.y) * slow);
         }  */
 
-        if (Mathf.Abs(inertia.x) >= 0.2f) inertia.x = 0.2f * Mathf.Sign(inertia.x);
-        if(Mathf.Abs(inertia.z) >= 0.2f) inertia.z = 0.2f * Mathf.Sign(inertia.z);
+        if (Mathf.Abs(inertia.x) >= 0.175f) inertia.x = 0.175f * Mathf.Sign(inertia.x);
+        if(Mathf.Abs(inertia.z) >= 0.175f) inertia.z = 0.175f * Mathf.Sign(inertia.z);
 
         transform.Translate(inertia);
 
@@ -146,15 +150,54 @@ public class PlayerController : MonoBehaviour
         //rb.MoveRotation(rb.rotation * Quaternion.Euler(0, Input.GetAxis("Horizontal") * rotSpeedmax * Time.deltaTime, 0));
         //print(Input.GetAxis("Horizontal"));
         ship.transform.Rotate(0, Input.GetAxis(axis2) * rotSpeedmax * Time.deltaTime, 0);
+        if (Input.GetAxis(axis2) != 0)
+        {
+            inertia *= 0.97f;
+        }
     }
 
     private void Fire()
     {
-        if (Input.GetButton(axis3) && countdown == 0 )
+        if (Input.GetButton(axis3) && countdown <= 0 )
         {
             countdown = cooldown;
             Instantiate(Laser, FirePoint.transform.position, FirePoint.transform.rotation);
         }
+    }
+
+    private void Hability()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (PlayerStats.i.Objts[5] == 2&& laserOk)
+            {
+                StartCoroutine(UltraLaser());
+            }
+            else if(PlayerStats.i.Objts[4] == 2 && shieldOk)
+            {
+                StartCoroutine(Escudo());
+            }
+        }
+    }
+
+    IEnumerator UltraLaser()
+    {
+        cooldown /= 2;
+        laserOk = false;
+        yield return new WaitForSeconds(3f);
+        cooldown *= 2;
+        yield return new WaitForSeconds(30f);
+        laserOk = true;
+    }
+
+    IEnumerator Escudo()
+    {
+        inmune = true;
+        shieldOk = false;
+        yield return new WaitForSeconds(5f);
+        inmune = false;
+        yield return new WaitForSeconds(30f);
+        shieldOk = true;
     }
 
     public void Dead()

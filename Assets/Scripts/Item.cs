@@ -37,7 +37,7 @@ public class Item : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        description.SetActive(true);
+       if(state>0) description.SetActive(true);
     }
     public void OnPointerExit(PointerEventData eventData)
     {

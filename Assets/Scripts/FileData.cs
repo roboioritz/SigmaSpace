@@ -43,7 +43,7 @@ public class FileData
         money = PlayerStats.money;
 
         levels = new int[25,25];
-        Objts = new int[20];
+        Objts = new int[21];
         Asteroidex = new bool[15];
         for(int y = 0; y < 25; y++)
         {
@@ -52,7 +52,7 @@ public class FileData
                 money = PlayerStats.money;
             }
 
-            if (y < 20) Objts[y] = PlayerStats.Objts[y];
+            if (y < 21) Objts[y] = PlayerStats.Objts[y];
             if (y < 15) Asteroidex[y] = PlayerStats.Asteroidex[y];
         }
     }

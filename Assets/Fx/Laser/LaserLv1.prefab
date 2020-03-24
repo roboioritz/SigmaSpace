@@ -68,7 +68,7 @@ MonoBehaviour:
   proyectil: {fileID: 3581269833754299216}
   fogonazo: {fileID: 3213376679211579824, guid: e419889df65522846a6d4513203a3711,
     type: 3}
-  speed: 15
+  speed: 25
 --- !u!65 &3912577940290169611
 BoxCollider:
   m_ObjectHideFlags: 0
