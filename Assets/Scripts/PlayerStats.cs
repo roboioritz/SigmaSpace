@@ -72,8 +72,8 @@ public class PlayerStats : MonoBehaviour
             if (y < 21) Objts[y] = data.Objts[y];
             if (y < 15) Asteroidex[y] = data.Asteroidex[y];
         }
-        
 
+        if (laserLvl > 3) laserLvl = 3;
     }
 
     public void Save()

@@ -41,6 +41,7 @@ public class Enemy : MonoBehaviour
    
     void Update()
     {
+        if (hp <= 0) Dead();
         if (type == "Misiler")
         {
             Deploy.transform.LookAt(radius2.OtherPos);
@@ -95,6 +96,7 @@ public class Enemy : MonoBehaviour
             {                
                 cool = cooldown;
                 Instantiate(Proyectile,Deploy.transform.position, Quaternion.Euler(0, transform.rotation.eulerAngles.y,0));
+                LevelManager.i.Add();
             }
         }
 
@@ -107,8 +109,7 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Laser" && Vector3.Magnitude(other.transform.position - transform.position) <= 1)
         {
             other.SendMessage("Impact");
-            hp -= PlayerStats.i.laserLvl + 1;
-            if (hp <= 0) Dead();
+            hp -= PlayerStats.i.laserLvl + 1;           
         }   
         
     }    
@@ -125,6 +126,7 @@ public class Enemy : MonoBehaviour
     {
         if (radius1.Onradius && (type == "Mine" || type == "ExpDrone" || type == "Missil")) PlayerController.i.TakeDamage(transform);
         Instantiate(Explosion, transform.position, Quaternion.identity);
+        LevelManager.i.Remove();
         Destroy(gameObject);
     }
 }

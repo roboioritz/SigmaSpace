@@ -42,7 +42,7 @@ public class LevelManager : MonoBehaviour
             }
             if (asteroidCount <= 0)
             {
-                print("hola");
+                //print("hola");
                 //playsound victori
                 //PlayerStats.i.levels[(PlayerStats.i.destiny.x + 2) + 5 * (-PlayerStats.i.destiny.y + 2)] = 2;
                 //PlayerStats.i.position = PlayerStats.i.destiny;
@@ -93,17 +93,18 @@ public class LevelManager : MonoBehaviour
     public void Remove()
     {
         asteroidCount--;
-    }
+    }    
 
     IEnumerator Back()
     {
         yield return new WaitForSeconds(5f);
+        if (PlayerStats.i.engineLvl == 0) PlayerStats.i.engineLvl = 1;
         PlayerStats.i.Save();
         SceneManager.LoadScene("LevelScene");
     }
 
     public void Exit()
-    {
+    {        
         SceneManager.LoadScene("LevelScene");
     }    
 

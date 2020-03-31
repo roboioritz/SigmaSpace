@@ -60,7 +60,7 @@ public class SceneController : MonoBehaviour
                     PlayerStats.i.armorLvl++;
                 }break;
             case "laser":
-                if (PlayerStats.i.money >= (PlayerStats.i.laserLvl * 10 + 10) && PlayerStats.i.laserLvl <= 4)
+                if (PlayerStats.i.money >= (PlayerStats.i.laserLvl * 10 + 10) && PlayerStats.i.laserLvl <= 2)
                 {
                     PlayerStats.i.money -= (PlayerStats.i.laserLvl * 10 + 10);
                     PlayerStats.i.laserLvl++;

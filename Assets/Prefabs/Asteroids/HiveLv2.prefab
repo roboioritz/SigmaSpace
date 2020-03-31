@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Vel: {x: 0, y: 0}
   rotVel: {x: 0, y: 0, z: 0}
-  type: Hive
+  type: HiveBuged
   hp: 4
   value: 0
   Lvl: 3
@@ -105,6 +105,8 @@ MonoBehaviour:
     type: 3}
   dropPrefab2: {fileID: 0}
   esplosion: {fileID: 1025285306637258, guid: d8f0099df63275647a8bcf646df1ca00, type: 3}
+  self: {fileID: 0}
+  twinOther: {fileID: 0}
 --- !u!114 &5662870212855108328
 MonoBehaviour:
   m_ObjectHideFlags: 0

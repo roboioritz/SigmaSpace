@@ -150,9 +150,9 @@ public class PlayerController : MonoBehaviour
         //rb.MoveRotation(rb.rotation * Quaternion.Euler(0, Input.GetAxis("Horizontal") * rotSpeedmax * Time.deltaTime, 0));
         //print(Input.GetAxis("Horizontal"));
         ship.transform.Rotate(0, Input.GetAxis(axis2) * rotSpeedmax * Time.deltaTime, 0);
-        if (Input.GetAxis(axis2) != 0)
+        if (Input.GetAxis(axis2) != 0 && Input.GetAxis(axis1) !=0)
         {
-            inertia *= 0.97f;
+            inertia *= 0.96f;
         }
     }
 

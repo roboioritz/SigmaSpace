@@ -25,11 +25,12 @@ public class ScenePlayerController : MonoBehaviour
         Time.timeScale = 1f;
         transform.position = new Vector3(PlayerStats.i.position.x, 0.1f, PlayerStats.i.position.y);
         departure = PlayerStats.i.position;
-        engine = PlayerStats.i.engineLvl;
+        
     }    
 
     void Update()
     {
+        engine = PlayerStats.i.engineLvl;
         if (!paused)
         {
             Move();
@@ -162,10 +163,15 @@ public class ScenePlayerController : MonoBehaviour
         Negro_ani.SetTrigger("ZumIn");
         camera.SendMessage("ZumIn");
         yield return new WaitForSeconds(1f);
-        //SceneManager.LoadScene("[" + (departure.x + moveCount.x).ToString() + "][" + (departure.y + moveCount.y).ToString() + "]");
+        if (Application.CanStreamedLevelBeLoaded("[" + (departure.x + moveCount.x).ToString() + "][" + (departure.y + moveCount.y).ToString() + "]"))
+        {
+            SceneManager.LoadScene("[" + (departure.x + moveCount.x).ToString() + "][" + (departure.y + moveCount.y).ToString() + "]");
+        }
+        else SceneManager.LoadScene("ProceduralLevel");
         //SceneManager.LoadScene("Pruebas sector");
-        SceneManager.LoadScene("[0][0]");
+        //SceneManager.LoadScene("[0][0]");
         PlayerStats.i.destiny = new Vector2Int(departure.x + moveCount.x, departure.y + moveCount.y);
+        
     }
 
 }

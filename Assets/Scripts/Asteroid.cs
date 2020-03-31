@@ -65,7 +65,7 @@ public class Asteroid : MonoBehaviour
             type = "Twin2";
             start = false;
         }
-
+        if (hp <= 0) Dead();
         if (!start)
         {
             
@@ -132,7 +132,7 @@ public class Asteroid : MonoBehaviour
             other.SendMessage("Impact");
 
             if(type != "Metalic") hp -= PlayerStats.i.laserLvl+1; //playerStats.Laserlvl en el futuro
-            if (hp <= 0) Dead();
+            
         }
 
     }
@@ -164,7 +164,11 @@ public class Asteroid : MonoBehaviour
         if (dropPrefab1 != null)
         {
             Instantiate(dropPrefab1, transform.position, Quaternion.identity);
+            LevelManager.i.SendMessage("Add");           
             Instantiate(dropPrefab1, transform.position, Quaternion.identity);
+            LevelManager.i.SendMessage("Add");
+            
+
         }
         if (dropPrefab2 != null)for (int i = 0; i < value; i++) Instantiate(dropPrefab2, transform.position, Quaternion.identity);
         LevelManager.i.SendMessage("Remove");

@@ -69,7 +69,7 @@ public class Ui_controller : MonoBehaviour
             else
                 shoparmor.text = "MAX";
 
-            if (PlayerStats.i.laserLvl <= 4)
+            if (PlayerStats.i.laserLvl <= 2)
                 shoplaser.text = "Laser Lv." + PlayerStats.i.laserLvl + " : " + (PlayerStats.i.laserLvl * 10 + 10);
             else
                 shoplaser.text = "MAX";
