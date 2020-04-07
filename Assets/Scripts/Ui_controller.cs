@@ -16,6 +16,7 @@ public class Ui_controller : MonoBehaviour
     public GameObject pause;
     public GameObject shop;
     public GameObject ingame;
+    public GameObject ingame2;
     public GameObject load;
     public GameObject options;
     public GameObject SceneExit;
@@ -99,6 +100,9 @@ public class Ui_controller : MonoBehaviour
             case "ingame":
                 ingame.SetActive(true);
                 break;
+            case "ingame2":
+                ingame2.SetActive(true);
+                break;
             case "cristals":
                 shop.SetActive(true);
                 break;
@@ -169,6 +173,9 @@ public class Ui_controller : MonoBehaviour
                 break;
             case "any":
                 anyKey.SetActive(false);
+                break;
+            case "ingame2":
+                ingame2.SetActive(false);
                 break;
         }
     }

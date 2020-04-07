@@ -20,8 +20,9 @@ public class PlayerController : MonoBehaviour
     public GameObject explosion;
     public Animator ani;
     public float limit;
-    public Vector3 inertia;
+    public Vector3 inertia;  
     
+
 
     private GameObject objeto;
     private Rigidbody rb;
@@ -57,6 +58,9 @@ public class PlayerController : MonoBehaviour
         axis3 = "Fire" + player;
         axis4 = "Special" + player;
         inertia = Vector3.zero;
+        laserOk = false;
+        shieldOk = false;
+        StartCoroutine(LoadHability());
     }
     
     void Update()
@@ -186,6 +190,7 @@ public class PlayerController : MonoBehaviour
         laserOk = false;
         yield return new WaitForSeconds(3f);
         cooldown *= 2;
+        LivesAndCooldown.i.start();
         yield return new WaitForSeconds(30f);
         laserOk = true;
     }
@@ -196,9 +201,18 @@ public class PlayerController : MonoBehaviour
         shieldOk = false;
         yield return new WaitForSeconds(5f);
         inmune = false;
+        LivesAndCooldown.i.start();
         yield return new WaitForSeconds(30f);
         shieldOk = true;
     }
+
+    IEnumerator LoadHability()
+    {
+        yield return new WaitForSeconds(30f);
+        shieldOk = true;
+        laserOk = true;
+    }
+
 
     public void Dead()
     {

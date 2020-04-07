@@ -23,6 +23,7 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 1f;
         //Ui_controller.i.Enable("ingame");
         UI.Enable("ingame");
+        UI.Enable("ingame2");
         i = this;
         Instantiate(Player1, transform.position, Quaternion.identity);
     }
