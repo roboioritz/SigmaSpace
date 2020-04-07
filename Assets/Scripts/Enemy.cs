@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public GameObject Explosion;
     public GameObject Proyectile;
     public GameObject Deploy;
-    public float acceleration;
+    public float acceleration = 0;
 
     public string type;
     public int hp;
@@ -26,12 +26,14 @@ public class Enemy : MonoBehaviour
         cool = cooldown;
         if (type == "Hive")
         {
+            acceleration = 1;
             transform.rotation = Quaternion.Euler(0, Random.Range(-180, 180), 0);
             inertia = new Vector3(acceleration * Time.deltaTime * Mathf.Sin(Mathf.Deg2Rad * (transform.eulerAngles.y)), 0,
                                   acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * (transform.eulerAngles.y)));
         }
         if (type == "Missil")
         {
+            acceleration = 5;
             Destroy(gameObject, 10f);
             transform.LookAt(radius2.OtherPos);
             inertia = new Vector3(acceleration * Time.deltaTime * Mathf.Sin(Mathf.Deg2Rad * (transform.eulerAngles.y)), 0,
@@ -41,6 +43,8 @@ public class Enemy : MonoBehaviour
    
     void Update()
     {
+
+
         if (hp <= 0) Dead();
         if (type == "Misiler")
         {
@@ -56,7 +60,8 @@ public class Enemy : MonoBehaviour
         }
 
         if(type == "ExpDrone" && radius2.Onradius)
-        {            
+        {
+            if (acceleration < 0.06f) acceleration += 0.03f * Time.deltaTime;
             transform.LookAt(radius2.OtherPos);
             inertia = new Vector3(acceleration *  Mathf.Sin(Mathf.Deg2Rad * (transform.eulerAngles.y)), 0,
                                   acceleration *  Mathf.Cos(Mathf.Deg2Rad * (transform.eulerAngles.y)));
@@ -67,15 +72,18 @@ public class Enemy : MonoBehaviour
         {
             transform.LookAt(radius2.OtherPos);
             if (radius1.Onradius == false)
-            {                
+            {
+                if (acceleration < 0.06f) acceleration += 0.03f * Time.deltaTime;
                 inertia = new Vector3(acceleration  * Mathf.Sin(Mathf.Deg2Rad * (transform.eulerAngles.y)), 0,
                                       acceleration * Mathf.Cos(Mathf.Deg2Rad * (transform.eulerAngles.y)));
             }
 
             if (radius1.Onradius == true)
             {
-                inertia = new Vector3(acceleration * 0.25f * Mathf.Sin(Mathf.Deg2Rad * (transform.eulerAngles.y)), 0,
-                                      acceleration * 0.25f * Mathf.Cos(Mathf.Deg2Rad * (transform.eulerAngles.y)));
+                if (acceleration > 0.02) acceleration -= 0.03f * Time.deltaTime;
+                if (acceleration < 0) acceleration = 0;
+                inertia = new Vector3(acceleration * Mathf.Sin(Mathf.Deg2Rad * (transform.eulerAngles.y)), 0,
+                                      acceleration * Mathf.Cos(Mathf.Deg2Rad * (transform.eulerAngles.y)));
             }
 
         }
@@ -109,7 +117,7 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Laser" && Vector3.Magnitude(other.transform.position - transform.position) <= 1)
         {
             other.SendMessage("Impact");
-            hp -= PlayerStats.i.laserLvl + 1;           
+            hp -= PlayerStats.i.laserLvl +1;           
         }   
         
     }    

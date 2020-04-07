@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3e57c8da034184cb8c3b8686de8754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 0.2
+  acceleration: 0.25
   rotSpeedmax: 350
   cooldown: 30
   armor: 0
@@ -184,8 +184,6 @@ MonoBehaviour:
   ani: {fileID: 0}
   limit: 0
   inertia: {x: 0, y: 0, z: 0}
-  Cos: 0
-  overEngine: {x: 0, y: 0}
 --- !u!114 &7684106584575208747
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -859,17 +857,17 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 6.1981
       objectReference: {fileID: 0}
-    - target: {fileID: 7245323275437055723, guid: 59ca26429debbea4c8742cd1f342f364,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 027a0d0995a7e514ea611b117d00b773, type: 2}
     - target: {fileID: 3459115007505202884, guid: 59ca26429debbea4c8742cd1f342f364,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 027a0d0995a7e514ea611b117d00b773, type: 2}
     - target: {fileID: 3491871621152997064, guid: 59ca26429debbea4c8742cd1f342f364,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 027a0d0995a7e514ea611b117d00b773, type: 2}
+    - target: {fileID: 7245323275437055723, guid: 59ca26429debbea4c8742cd1f342f364,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

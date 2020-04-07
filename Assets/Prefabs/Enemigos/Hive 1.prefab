@@ -181,7 +181,7 @@ MonoBehaviour:
   Deploy: {fileID: 8269171755397730994}
   acceleration: 1
   type: Hive
-  hp: 1
+  hp: 16
   value: 0
   cooldown: 10
   inertia: {x: 0, y: 0, z: 0}

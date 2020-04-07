@@ -130,8 +130,8 @@ public class PlayerController : MonoBehaviour
                                -Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * ship.transform.eulerAngles.y) * slow);
         }  */
 
-        if (Mathf.Abs(inertia.x) >= 0.175f) inertia.x = 0.175f * Mathf.Sign(inertia.x);
-        if(Mathf.Abs(inertia.z) >= 0.175f) inertia.z = 0.175f * Mathf.Sign(inertia.z);
+        if (Mathf.Abs(inertia.x) >= 0.15f) inertia.x = 0.15f * Mathf.Sign(inertia.x);
+        if(Mathf.Abs(inertia.z) >= 0.15f) inertia.z = 0.15f * Mathf.Sign(inertia.z);
 
         transform.Translate(inertia);
 
@@ -156,7 +156,7 @@ public class PlayerController : MonoBehaviour
         ship.transform.Rotate(0, Input.GetAxis(axis2) * rotSpeedmax * Time.deltaTime, 0);
         if (Input.GetAxis(axis2) != 0 && Input.GetAxis(axis1) !=0)
         {
-            inertia *= 0.96f;
+            inertia *= 0.99f;
         }
     }
 
@@ -304,7 +304,11 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(Transform Damager)
     {
-        rb.AddExplosionForce(300, Damager.position, 50);
+        //rb.AddExplosionForce(100, Damager.position, 50);
+        Vector3 dir =  transform.position - Damager.position;
+        float module = Mathf.Sqrt(dir.magnitude);
+        //dir.Normalize();
+        inertia += dir / (module * module);
         print("aa");
         if (!inmune )
         {

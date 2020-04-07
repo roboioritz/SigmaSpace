@@ -239,7 +239,7 @@ MonoBehaviour:
   Deploy: {fileID: 0}
   acceleration: 0.05
   type: ExpDrone
-  hp: 1
+  hp: 3
   value: 0
   cooldown: 0
   inertia: {x: 0, y: 0, z: 0}

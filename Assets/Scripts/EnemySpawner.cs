@@ -29,9 +29,9 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
+        Random.InitState(Mathf.FloorToInt(Mathf.Pow(x, 5) - Mathf.Pow(y, 3)));
         SetSecValues();
-        SetSeedValues();
-        Random.seed = Mathf.FloorToInt (Mathf.Pow(x,5) - Mathf.Pow(y,3));
+        SetSeedValues();        
         amount = Mathf.FloorToInt((Mathf.Abs(x) + Mathf.Abs(y)) / 4 - ((Mathf.Abs(x) + Mathf.Abs(y)) % 4 / 4)) + 1;
         if (amount > 4) amount = 4;
         if (enemies)

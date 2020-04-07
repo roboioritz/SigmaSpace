@@ -240,7 +240,7 @@ MonoBehaviour:
   Deploy: {fileID: 0}
   acceleration: 0.05
   type: Drone
-  hp: 1
+  hp: 6
   value: 0
   cooldown: 3
   inertia: {x: 0, y: 0, z: 0}
