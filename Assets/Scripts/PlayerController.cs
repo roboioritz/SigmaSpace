@@ -130,8 +130,8 @@ public class PlayerController : MonoBehaviour
                                -Input.GetAxis(axis1) * acceleration * Time.deltaTime * Mathf.Cos(Mathf.Deg2Rad * ship.transform.eulerAngles.y) * slow);
         }  */
 
-        if (Mathf.Abs(inertia.x) >= 0.15f) inertia.x = 0.15f * Mathf.Sign(inertia.x);
-        if(Mathf.Abs(inertia.z) >= 0.15f) inertia.z = 0.15f * Mathf.Sign(inertia.z);
+        if (Mathf.Abs(inertia.x) >= 0.165f) inertia.x = 0.165f * Mathf.Sign(inertia.x);
+        if(Mathf.Abs(inertia.z) >= 0.165f) inertia.z = 0.165f * Mathf.Sign(inertia.z);
 
         transform.Translate(inertia);
 

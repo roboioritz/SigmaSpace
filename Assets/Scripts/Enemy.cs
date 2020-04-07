@@ -117,7 +117,7 @@ public class Enemy : MonoBehaviour
         if (other.tag == "Laser" && Vector3.Magnitude(other.transform.position - transform.position) <= 1)
         {
             other.SendMessage("Impact");
-            hp -= PlayerStats.i.laserLvl +1;           
+            hp -= PlayerStats.i.laserLvl + 1;           
         }   
         
     }    

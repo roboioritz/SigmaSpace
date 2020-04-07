@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba3e57c8da034184cb8c3b8686de8754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceleration: 0.25
+  acceleration: 0.15
   rotSpeedmax: 350
   cooldown: 30
   armor: 0
