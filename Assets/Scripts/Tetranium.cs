@@ -12,7 +12,7 @@ public class Tetranium : MonoBehaviour
 
     void Awake()
     {
-        basevel = new Vector3(Random.Range(-.5f, .5f), 0,Random.Range(-.5f, .5f)) * Time.deltaTime;
+        inertia = new Vector3(Random.Range(-.5f, .5f), 0,Random.Range(-.5f, .5f)) * Time.deltaTime;
         rotVel = new Vector3(Random.Range(-60.0f, 60.0f), Random.Range(-60.0f, 60.0f), Random.Range(-60.0f, 60.0f));
     }
 
@@ -22,8 +22,13 @@ public class Tetranium : MonoBehaviour
         float module = Mathf.Sqrt(dir.magnitude);
         dir.Normalize();     
         //transform.Translate(inertia.x * Time.deltaTime,0,inertia.z*Time.deltaTime,Space.World);
-        inertia += new Vector3(dir.x, 0, dir.z) * PlayerStats.i.magnetLvl * Time.deltaTime * 0.1f /(module*module);
-        transform.Translate(basevel+inertia, Space.World);
+        inertia += new Vector3(dir.x, 0, dir.z) * PlayerStats.i.magnetLvl * Time.deltaTime * 0.2f /(module*module);
+        Vector3 Speed = basevel + inertia;
+
+        if (Mathf.Abs(inertia.x) >= 0.165f/module) inertia.x = 0.165f * Mathf.Sign(inertia.x) / module;
+        if (Mathf.Abs(inertia.z) >= 0.165f/module) inertia.z = 0.165f * Mathf.Sign(inertia.z) / module;
+
+        transform.Translate(inertia, Space.World);
 
         transform.Rotate(rotVel * Time.deltaTime, Space.Self);
         //Magnet(LevelManager.posP1, LevelManager.posP1);
