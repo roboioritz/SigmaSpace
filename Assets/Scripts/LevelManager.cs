@@ -13,6 +13,9 @@ public class LevelManager : MonoBehaviour
     public Ui_controller UI;
     public bool start = false;
     public int asteroidCount;
+    public AudioSource ASource;
+    public AudioSource ASource2;
+    private bool won;
 
     private bool paused;
 
@@ -24,6 +27,7 @@ public class LevelManager : MonoBehaviour
         //Ui_controller.i.Enable("ingame");
         UI.Enable("ingame");
         UI.Enable("ingame2");
+        UI.Disable("misiones");
         i = this;
         Instantiate(Player1, transform.position, Quaternion.identity);
     }
@@ -48,7 +52,7 @@ public class LevelManager : MonoBehaviour
                 //PlayerStats.i.levels[(PlayerStats.i.destiny.x + 2) + 5 * (-PlayerStats.i.destiny.y + 2)] = 2;
                 //PlayerStats.i.position = PlayerStats.i.destiny;
                 PlayerStats.i.LevelPass();
-                StartCoroutine(Back());
+                Win();        
                 
             }
 
@@ -86,6 +90,22 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(Back());
     }
 
+    public void Win()
+    {
+        //PlayerStats.i.LevelArray.Y[PlayerStats.i.destiny.y+12].X[PlayerStats.i.destiny.x+12] = 2;
+        PlayerStats.i.levels[-(PlayerStats.i.destiny.y - 12), PlayerStats.i.destiny.x + 12] = 2;
+        if (!won) { ASource.Play(); won = true; }
+        End();
+    }
+
+    public void Loose()
+    {
+        //PlayerStats.i.LevelArray.Y[PlayerStats.i.destiny.y+12].X[PlayerStats.i.destiny.x+12] = 1;
+        PlayerStats.i.levels[-(PlayerStats.i.destiny.y - 12), PlayerStats.i.destiny.x + 12] = 1;
+        ASource2.Stop();
+        End();
+    }
+
     public void Add()
     {
         asteroidCount++;
@@ -98,6 +118,7 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator Back()
     {
+        
         yield return new WaitForSeconds(5f);
         if (PlayerStats.i.engineLvl == 0) PlayerStats.i.engineLvl = 1;
         PlayerStats.i.Save();

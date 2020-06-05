@@ -23,6 +23,7 @@ public class Ui_controller : MonoBehaviour
     public GameObject SectorExit;
     public GameObject LoadScreen;
     public GameObject anyKey;
+    public GameObject Misiones;
 
     public GameObject lives;
     public GameObject liveprefab;
@@ -35,6 +36,9 @@ public class Ui_controller : MonoBehaviour
     public Text shoparmor;
     public Text shoplaser;
     public Text shopmagnet;
+    public Text coordenadas;
+
+    public AudioSource ASource;
 
     public TextMeshProUGUI money;
     /*public TextMeshProUGUI questTitle;
@@ -59,6 +63,11 @@ public class Ui_controller : MonoBehaviour
         /*questTitle.text = "" + Quests[0].title;
         questDescription.text = "" + Quests[0].description;
         questCompletion.text = "" + Quests[0].completionDescription;*/
+
+        if (coordenadas != null)
+        {
+            coordenadas.text = "[" + (ScenePlayerController.i.departure.x + ScenePlayerController.i.moveCount.x) + "][" + (ScenePlayerController.i.departure.y + ScenePlayerController.i.moveCount.y) + "]";
+        }
 
             if (PlayerStats.i.engineLvl <= 2)
                 shopengine.text = "Engine Lv." + PlayerStats.i.engineLvl + " : " + (PlayerStats.i.engineLvl * 10 + 10);
@@ -130,6 +139,9 @@ public class Ui_controller : MonoBehaviour
             case "any":
                 anyKey.SetActive(true);
                 break;
+            case "misiones":
+                Misiones.SetActive(true);
+                break;
 
         }
     }
@@ -176,6 +188,9 @@ public class Ui_controller : MonoBehaviour
                 break;
             case "ingame2":
                 ingame2.SetActive(false);
+                break;
+            case "misiones":
+                Misiones.SetActive(false);
                 break;
         }
     }

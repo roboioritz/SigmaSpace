@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
+    
+
     public List<Item> Items;
 
     public Text engineLvl;
@@ -17,6 +19,7 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         SetItemValues();
+        
     }
 
     

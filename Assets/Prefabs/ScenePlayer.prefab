@@ -124,12 +124,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93992f6fae3bb454f93760e6c70ee242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 8739137164341402953, guid: 5511bf1fa25aea044b0b8787b1d1b5d4,
-    type: 3}
   moving: 0
   departure: {x: 0, y: 0}
   engine: 0
   moveCount: {x: 0, y: 0}
+  Negro: {fileID: 0}
+  camera: {fileID: 0}
 --- !u!1 &4590660230256648312
 GameObject:
   m_ObjectHideFlags: 0

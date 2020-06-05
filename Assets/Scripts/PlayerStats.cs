@@ -24,22 +24,23 @@ public class PlayerStats : MonoBehaviour
 
     public LevelArrayStats  LevelArray;
 
-    public struct levels
+    /*public struct levels
     {
         public int[] X;
     }
-    public levels[] Y;
+    public levels[] Y;*/
 
     public int[] Objts;
     public bool[] Asteroidex;
 
-    //public int[,] levels;
-    public bool[] quests;
+    public int[,] levels;
+    public int[] Quests;
 
     private void Awake()
     {
         i = this;
         DontDestroyOnLoad(i);
+        levels = new int[25, 25];
     }
 
     public void Resetear()
@@ -66,12 +67,20 @@ public class PlayerStats : MonoBehaviour
         {
             for (int x = 0; x < 25; x++)
             {
-                LevelArray.Y[y].X[x] = data.Y[y].X[x];                
+                //LevelArray.Y[y].X[x] = data.LevelArray.Y[y].X[x];
+                levels[y, x] = data.levels[y,x];
             }
 
+            if (y < 20) Quests[y] = data.Quests[y];
             if (y < 21) Objts[y] = data.Objts[y];
             if (y < 15) Asteroidex[y] = data.Asteroidex[y];
+            
         }
+
+        Objts[0] = 1;
+        Objts[1] = 1;
+        Objts[2] = 1;
+        Objts[3] = 1;
 
         if (laserLvl > 3) laserLvl = 3;
     }
@@ -79,7 +88,7 @@ public class PlayerStats : MonoBehaviour
     public void Save()
     {
         SaveFile data = new SaveFile();
-
+        data.init();
         data.isnew = isnew;
         data.FileName = FileName;
         data.FileNum = FileNum;
@@ -97,7 +106,8 @@ public class PlayerStats : MonoBehaviour
         {
             //data.Y[y] = data.Array();
         }
-            data.Objts = new int[21];
+        data.Quests = new int[20];
+        data.Objts = new int[21];
         data.Asteroidex = new bool[15];
         for (int y = 0; y < 25; y++)
         {
@@ -105,9 +115,11 @@ public class PlayerStats : MonoBehaviour
             data.Y[y].X = new int[25];
             for (int x = 0; x < 25; x++)
             {
-                //data.Y[y].X[x] = Y[y].X[x];
+                //data.Y[y].X[x] = LevelArray.Y[y].X[x];
+                data.levels[y, x] = levels[y,x];
             }
 
+            if (y < 20) data.Quests[y] = Quests[y];
             if (y < 21) data.Objts[y] = Objts[y];
             if (y < 15) data.Asteroidex[y] = Asteroidex[y];
 
@@ -118,6 +130,11 @@ public class PlayerStats : MonoBehaviour
     public void LevelPass()
     {
         position = destiny;
+    }
+
+    public void QuestAward(int obj)
+    {
+        Objts[obj] = 1;
     }
    
 

@@ -9,6 +9,7 @@ public class Tetranium : MonoBehaviour
     private Vector3 dir;
     public int magnetlvl; // temporal
     private Vector3 rotVel;
+    public AudioSource ASource;
 
     void Awake()
     {
@@ -41,7 +42,8 @@ public class Tetranium : MonoBehaviour
             //Play sound recoger tetrenium
             //other.SendMessage("PickUp"); //PlayerControler.PickUp("Tetranium",Value=1)
             PlayerStats.i.money++;
-            Destroy(gameObject);
+            ASource.Play();
+            Destroy(gameObject,0.13f);
         }
 
         if (other.tag == "Asteroid" || other.tag == "Tetranium")

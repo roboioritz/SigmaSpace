@@ -15,7 +15,7 @@ public class Asteroid : MonoBehaviour
     public GameObject dropPrefab2;
     public GameObject esplosion;
     public GameObject self;
-    public GameObject twinOther;
+    public GameObject twinOther;    
 
     private float size;
     private float r1 = 0, r2 = 0, r4 = 0;
@@ -122,7 +122,7 @@ public class Asteroid : MonoBehaviour
     {
         if (other.tag == "Laser" && type != "Charged")
         {
-            GameObject objeto = Instantiate(esplosion, other.transform.position, Quaternion.identity); Destroy(objeto, 1f);
+            //GameObject objeto = Instantiate(esplosion, other.transform.position, Quaternion.identity); Destroy(objeto, 1f);
             if (type == "Tetranium" || type == "Dust")
             {
                 float r = Random.Range(-1,1);
@@ -136,7 +136,7 @@ public class Asteroid : MonoBehaviour
         }
         if (other.tag == "Laser" && type == "Charged" && Vector3.Magnitude(other.transform.position - transform.position) <= 3)
         {
-            GameObject objeto = Instantiate(esplosion, other.transform.position, Quaternion.identity); Destroy(objeto, 1f);
+            //GameObject objeto = Instantiate(esplosion, other.transform.position, Quaternion.identity); Destroy(objeto, 1f);
             if (type != "Metalic") hp -= PlayerStats.i.laserLvl + 1; //playerStats.Laserlvl en el futuro
             other.SendMessage("Impact");
         }

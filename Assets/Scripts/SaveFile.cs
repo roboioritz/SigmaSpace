@@ -34,7 +34,7 @@ public class SaveFile : MonoBehaviour
     public int magnetLvl;
 
     public int money;
-
+    public LevelArrayStats LevelArray;
     public struct Levels
     {
         public int[] X;
@@ -44,8 +44,8 @@ public class SaveFile : MonoBehaviour
     public int[] Objts;
     public bool[] Asteroidex;
 
-    public int[] levels;
-    public bool[] quests;
+    public int[,] levels;
+    public int[] Quests;
 
     /*void Start()
     {
@@ -58,11 +58,14 @@ public class SaveFile : MonoBehaviour
     private void OnEnable()
     {                        
         Y = new Levels[25];
+        Quests = new int[20];
+        levels = new int[25, 25];
         Objts = new int[21];
         Asteroidex = new bool[15];
         for (int i = 0; i < 25; i++)
         {
             Y[i].X = new int[25];
+            LevelArray.Y[i].X = new int[25];
         }
         LoadStats();
         if (!existe) { NameOfFile.SetActive(false); NewGame.SetActive(true); NewGameText.text = "NewGame"; InputField.SetActive(false); }
@@ -100,29 +103,32 @@ public class SaveFile : MonoBehaviour
             armorLvl = data.armorLvl;
             magnetLvl = data.magnetLvl;
             money = data.money;
-            levels = new int[25];
+            //levels = new int[25];            
+            Quests = new int[20];
             Objts = new int[21];
             Asteroidex = new bool[15];
             for (int y = 0; y < 25; y++)
             {
                 for (int x = 0; x < 25; x++)
                 {
-                    Y[y].X[x] = data.levels[y,x];                                    
+                    //LevelArray.Y[y].X[x] = data.levels[y,x];
+                    levels[y,x] = data.levels[y, x];
                 }
 
+                if (y < 20) Quests[y] = data.Quests[y];
                 if (y < 21) Objts[y] = data.Objts[y];
                 if (y < 15) Asteroidex[y] = data.Asteroidex[y];
-            }            
+            }
             
             isnew = data.isnew;
             if (isnew == 0) existe = false;
-            else if (isnew == 1) existe = true;                      
+            else if (isnew == 1) existe = true;
         }
         else if (data == null)
         {
             existe = false;
             print(isnew);
-        }        
+        }
     }
 
     public void ButtoPush()
@@ -156,21 +162,24 @@ public class SaveFile : MonoBehaviour
         laserLvl = 0;
         armorLvl = 0;
         magnetLvl = 0;
-        money = 2000;
-        levels = new int[25];
+        money = 0;
+        //levels = new int[25];
 
         for (int y = 0; y < 25; y++)
         {
             for (int x = 0; x < 25; x++)
             {
-                Y[y].X[x] = 0;                
+                //Y[y].X[x] = 0;
+                levels[y, x] = 0;
             }
 
-            if (y < 21) Objts[y] = 1; // poner a 0
+            if (y < 20) Quests[y] = 0;
+            if (y < 21) Objts[y] = 0; // poner a 0
             if (y < 15) Asteroidex[y] = true; //poner a false
 
         }
 
+        Quests[0] = 1;
         //for (int i = 0; i < 25; i++) { levels[i] = 0; }
         SaveSystem.SaveStats(this, FileNum);        
         { NameOfFile.SetActive(false); NewGame.SetActive(true); NewGameText.text = "NewGame"; InputField.SetActive(false); }
@@ -193,7 +202,7 @@ public class SaveFile : MonoBehaviour
         armorLvl = 0;
         magnetLvl = 0;
         money = 0;
-        levels = new int[25];
+        //levels = new int[25];
         //for (int i = 0; i < 25; i++) { levels[i] = 0; }
         SaveSystem.SaveStats(this, FileNum);
         { NameOfFile.SetActive(false); NewGame.SetActive(true); NewGameText.text = "NewGame"; InputField.SetActive(false); }
@@ -208,6 +217,11 @@ public class SaveFile : MonoBehaviour
             w[i].X = new int[25];
         }
         return w;
+    }
+
+    public void init()
+    {
+        levels = new int[25, 25];
     }
 
 }

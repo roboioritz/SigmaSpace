@@ -30,6 +30,7 @@ public class ScenePlayerController : MonoBehaviour
 
     void Update()
     {
+        print("[" + (departure.x + moveCount.x).ToString() + "][" + (departure.y + moveCount.y).ToString() + "]");
         engine = PlayerStats.i.engineLvl;
         if (!paused)
         {
@@ -43,11 +44,21 @@ public class ScenePlayerController : MonoBehaviour
             }*/
             if (!shopopen)
             {
-                if (Input.GetKeyDown(KeyCode.Q))
+                if (Input.GetKeyDown(KeyCode.Q) && PlayerStats.i.Objts[8] == 1)
                 {
+                    if ((PlayerStats.i.position.x == 0 && PlayerStats.i.position.y == -2)
+                     || (PlayerStats.i.position.x == -3 && PlayerStats.i.position.y == -3)
+                     || (PlayerStats.i.position.x == 4 && PlayerStats.i.position.y == 7)
+                     || (PlayerStats.i.position.x == 10 && PlayerStats.i.position.y == -4) 
+                     || (PlayerStats.i.position.x == 3 && PlayerStats.i.position.y == -11)
+                     || (PlayerStats.i.position.x == -7 && PlayerStats.i.position.y == -8) 
+                     || (PlayerStats.i.position.x == -10 && PlayerStats.i.position.y == 5)
+                     || (PlayerStats.i.position.x == 8 && PlayerStats.i.position.y == 11))
+                    { 
                     shopopen = true;
                     Ui_controller.i.Enable("shop");
-                    //Time.timeScale = 0f;
+                        //Time.timeScale = 0f;
+                    }
                 }
             }
             /*else if (Input.GetButtonDown("Fuel1"))
