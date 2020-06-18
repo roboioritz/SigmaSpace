@@ -92,8 +92,12 @@ Material:
     - _ZWrite: 1
     m_Colors:
 <<<<<<< HEAD
+<<<<<<< HEAD
     - _BaseColor: {r: 1, g: 0, b: 0.7206764, a: 1}
     - _Color: {r: 1, g: 0, b: 0.7206764, a: 1}
+=======
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+>>>>>>> parent of 41fe967... BuildPresentacion
 =======
     - _Color: {r: 1, g: 1, b: 1, a: 1}
 >>>>>>> parent of 41fe967... BuildPresentacion

@@ -1279,6 +1279,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
     - target: {fileID: 4187881960045904180, guid: a7db77a21c3ad2846901fb4796211989,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1394,6 +1395,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+=======
+>>>>>>> parent of 41fe967... BuildPresentacion
 =======
 >>>>>>> parent of 41fe967... BuildPresentacion
     m_RemovedComponents:
