@@ -133,9 +133,6 @@ MonoBehaviour:
   dropPrefab2: {fileID: 6149302935080840289, guid: 7b62c15a6a217af4e88b2e9a6e66eb5c,
     type: 3}
   esplosion: {fileID: 1025285306637258, guid: d8f0099df63275647a8bcf646df1ca00, type: 3}
-  self: {fileID: 0}
-  twinOther: {fileID: 0}
-  ASource: {fileID: 0}
 --- !u!114 &3408956062412583342
 MonoBehaviour:
   m_ObjectHideFlags: 0

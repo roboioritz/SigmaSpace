@@ -17,7 +17,6 @@ public class Thunder : MonoBehaviour
     
     void Update()
     {
-        if (T1 == null || T2 == null) Destroy(gameObject);
         transform.LookAt(T1.transform);
 
         transform.position = ((T1.transform.position - T2.transform.position) / 2) + T2.transform.position;

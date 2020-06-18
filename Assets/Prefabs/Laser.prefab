@@ -108,4 +108,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   proyectil: {fileID: 0}
   fogonazo: {fileID: 0}
-  speed: 0

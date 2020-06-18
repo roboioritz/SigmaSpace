@@ -82,8 +82,7 @@ public class SceneController : MonoBehaviour
             for (int x = 0; x < 25; x++)
             {
                 //LevelArray.Y[y].X[x].state = PlayerStats.i.Y[y].X[x];
-                //LevelArray.Y[y].X[x].state = PlayerStats.i.LevelArray.Y[y].X[x];
-                LevelArray.Y[y].X[x].state = PlayerStats.i.levels[y, x];
+                LevelArray.Y[y].X[x].state = PlayerStats.i.LevelArray.Y[y].X[x];
             }
         }
     }

@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     public float cooldown;
     public int armor;
     public int player;
-    public GameObject self;
     public GameObject ship;
     public GameObject Laser;
     public GameObject FirePoint;
@@ -21,11 +20,9 @@ public class PlayerController : MonoBehaviour
     public GameObject explosion;
     public Animator ani;
     public float limit;
-    public Vector3 inertia;
+    public Vector3 inertia;  
+    
 
-    public AudioSource ASource;
-    public AudioSource ASource2;
-    public List<AudioClip> Clip;
 
     private GameObject objeto;
     private Rigidbody rb;
@@ -142,17 +139,13 @@ public class PlayerController : MonoBehaviour
         {
             ani.SetTrigger("isfuel");
             isfuel = true;
-            ASource.clip = Clip[0];
-            ASource.Play();
             //objeto = Instantiate(trail,trailPoint.transform.position,ship.transform.rotation);
             //objeto.transform.SetParent(ship.transform);            
         }
-
         if (Input.GetAxis(axis1) == 0 && isfuel)
         {
             ani.SetTrigger("notfuel");
             isfuel = false;
-            ASource.Stop();
         }
     }
 
@@ -172,8 +165,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton(axis3) && countdown <= 0 )
         {
             countdown = cooldown;
-            Instantiate(Laser, FirePoint.transform.position, FirePoint.transform.rotation);            
-            ASource2.Play();
+            Instantiate(Laser, FirePoint.transform.position, FirePoint.transform.rotation);
         }
     }
 
@@ -225,7 +217,7 @@ public class PlayerController : MonoBehaviour
     public void Dead()
     {
         //PlayerStats.i.levels[(PlayerStats.i.destiny.x + 2) + 5 * (-PlayerStats.i.destiny.y+2)] = 1;
-        LevelManager.i.SendMessage("Loose");       
+        LevelManager.i.SendMessage("End");
         Destroy(gameObject);
     }
 
